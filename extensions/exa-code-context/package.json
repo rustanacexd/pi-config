@@ -1,0 +1,16 @@
+{
+  "name": "pi-exa-code-context",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test:unit": "node --test test/*.test.ts",
+    "test": "npm run typecheck && npm run test:unit",
+    "benchmark": "node bench/context-vs-search.ts"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.4",
+    "typescript": "5.9.3"
+  }
+}

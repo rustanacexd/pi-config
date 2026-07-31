@@ -1,0 +1,36 @@
+# Credentials and machine trust
+/auth.json
+/trust.json
+.env
+.env.*
+*.pem
+*.key
+
+# Runtime state and generated data
+/sessions/
+/artifacts/
+/tmp/
+/run-history.jsonl
+/mcp-cache.json
+/models-store.json
+
+# Pi-managed package installations and clones
+/npm/
+/git/
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+__pycache__/
+*.py[cod]
+
+# Editor and OS files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Local-only overrides
+*.local.*

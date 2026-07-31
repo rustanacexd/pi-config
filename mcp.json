@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "exa-agent": {
+      "url": "https://mcp.exa.ai/mcp?tools=agent_tools",
+      "auth": "bearer",
+      "bearerTokenEnv": "EXA_API_KEY",
+      "lifecycle": "lazy",
+      "requestTimeoutMs": 900000
+    }
+  }
+}
