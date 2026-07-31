@@ -8,20 +8,20 @@
   "subagents": {
     "agentOverrides": {
       "scout": {
-        "model": "openai-codex/gpt-5.6-luna",
-        "thinking": "max"
+        "model": "openai-codex/gpt-5.6-sol",
+        "thinking": "medium"
       },
       "researcher": {
-        "model": "openai-codex/gpt-5.6-luna",
-        "thinking": "max"
+        "model": "openai-codex/gpt-5.6-sol",
+        "thinking": "medium"
       },
       "context-builder": {
-        "model": "openai-codex/gpt-5.6-luna",
-        "thinking": "max"
+        "model": "openai-codex/gpt-5.6-sol",
+        "thinking": "medium"
       },
       "worker": {
         "model": "openai-codex/gpt-5.6-sol",
-        "thinking": "medium"
+        "thinking": "high"
       }
     }
   },
@@ -34,6 +34,7 @@
     "npm:pi-tool-display",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@juicesharp/rpiv-todo",
-    "npm:pi-btw"
+    "npm:pi-btw",
+    "npm:@injaneity/pi-computer-use@0.5.0"
   ]
 }
