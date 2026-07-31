@@ -6,6 +6,23 @@
       "bearerTokenEnv": "EXA_API_KEY",
       "lifecycle": "lazy",
       "requestTimeoutMs": 900000
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@0.0.78",
+        "--headless",
+        "--isolated"
+      ],
+      "lifecycle": "lazy",
+      "includeTools": [
+        "browser_navigate",
+        "browser_snapshot",
+        "browser_close",
+        "browser_tabs"
+      ],
+      "requestTimeoutMs": 120000
     }
   }
 }
