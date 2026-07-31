@@ -14,9 +14,10 @@
 /mcp-cache.json
 /models-store.json
 
-# Pi-managed package installations and clones
+# Pi-managed package installations, clones, and skill links
 /npm/
 /git/
+/skills/
 
 # Dependencies and build output
 node_modules/
