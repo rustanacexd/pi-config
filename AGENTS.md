@@ -8,7 +8,6 @@
 ## Capability Routing
 
 - Prefer the most specific installed skill, connector, or repository workflow. Use local tools first for repository facts.
-- For cmux tasks, use only the matching cmux skill and its directed resources. If they are insufficient, report that and stop.
 - Use `exa_code_context` for focused external coding questions. Sanitize queries; never send secrets, private data, URLs, paths, or proprietary code without permission.
 - For broad technical or release research, use Exa-backed `web_search` (normally 10 results and 2–4 varied queries), favor primary sources, then fetch or source-check key claims.
 - For general web research, use OpenAI-backed `web_search`. Use Gemini only when requested or when a Google-grounded second opinion materially helps. Use `fetch_content` for video and difficult extraction.
