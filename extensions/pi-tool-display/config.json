@@ -16,7 +16,7 @@
   "mcpOutputMode": "hidden",
   "previewLines": 4,
   "expandedPreviewMaxLines": 4000,
-  "bashOutputMode": "opencode",
+  "bashOutputMode": "summary",
   "bashCollapsedLines": 0,
   "diffViewMode": "auto",
   "diffIndicatorMode": "bars",
