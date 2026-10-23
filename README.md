@@ -27,6 +27,7 @@ The repository tracks shareable configuration only. Credentials (`auth.json`, `m
 | [`pstack-claude`](https://github.com/michael-denyer/pstack-claude) | `git:github.com/michael-denyer/pstack-claude` | Workflows, principles, and multi-model subagent orchestration (`poteto-mode`, `architect`, `arena`, `interrogate`, `how`, `why`, etc.). |
 | [`@plannotator/pi-extension`](https://github.com/backnotprop/plannotator/tree/main/apps/pi-extension) | `npm:@plannotator/pi-extension` | Interactive review and annotation for plans, code diffs, and pull requests. |
 | [`visual-explainer`](https://github.com/nicobailon/visual-explainer) | `git:github.com/nicobailon/visual-explainer` | Self-contained HTML visual explanations, diagrams, diff/plan reviews, and slide decks. |
+| [`@calesennett/pi-codex-fast`](https://pi.dev/packages/@calesennett/pi-codex-fast) | `npm:@calesennett/pi-codex-fast` | Fast (`priority`) and Ultrafast (`ultrafast`) service tiers for OpenAI and ChatGPT Codex models (`/codex-fast`, `/codex-ultrafast`, `--fast`, `--ultrafast`). |
 
 ## Tracked files
 
