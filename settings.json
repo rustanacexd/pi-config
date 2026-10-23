@@ -2,7 +2,8 @@
   "packages": [
     "git:github.com/michael-denyer/pstack-claude",
     "npm:@plannotator/pi-extension",
-    "git:github.com/nicobailon/visual-explainer"
+    "git:github.com/nicobailon/visual-explainer",
+    "npm:@calesennett/pi-codex-fast"
   ],
   "skills": [
     "-skills/visual-explainer"
