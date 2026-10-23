@@ -1,54 +1,55 @@
-# Global Instructions
+# Skills and task tracking
 
-## Communication
+Follow a named skill's supplied instructions or read its SKILL.md and runtime mapping
+(`pi-tools.md` for pstack skills).
+Pi has no built-in task tracker; when a workflow tracks tasks, use `todo.md`.
 
-- Be concise. Lead with the result; report only meaningful changes, verification, and remaining risks.
+# T3 Code only
 
-## Delegation
+In T3 Code, use `google/gemini-4-argon`, `openai/gpt-6.1-sol`, `openai/gpt-6-astra`, and
+`anthropic/claude-opus-5-5` for the `arena runners`, `architect runners`, and
+`interrogate reviewers` role lists.
+Follow pstack for workflow, effort, judging, unavailable-model handling, and review
+requirements.
 
-- The parent owns orchestration, synthesis, and final decisions.
-- Use judgment for local repository and file search. The parent may inspect directly when the scope is small or known; delegate broad, exploratory, or parallelizable discovery to a local-context/code subagent.
-- Use one agent when one will do. Give every subagent a hard scope limit and name what is out of bounds.
-- A skill, command, or agent definition that specifies its own delegation workflow overrides the general guidance; run it as written and flag obvious concerns briefly.
-- Treat a subagent's finding as a claim until you verify what it measured.
+For cross-provider members, use T3's `delegate_task` with providers and models from
+`orchestrator_capabilities`, preserving pstack's resolved task instructions and model
+options. Set `interactionMode: "default"` when delegating execution tasks.
 
-## Git and Attribution
+# Search routing
 
-- Never pass `-c user.name` or `-c user.email` to `git`. Use the configured identity. If a repository has none, ask.
-- Never add AI-agent attribution to authored work: no generated-by footers or AI `Co-Authored-By` trailers.
+1. Check local sources first: the conversation, the repo, installed skills and connectors,
+   and local tools (`--help`, installed package source). For a library question, find the
+   pinned version first and research that version.
+2. Search only for what local sources cannot settle, such as current releases, vendor
+   docs, external errors, and prices. Memory does not settle these, even when you are
+   sure. Pi has no built-in web search tool; use Exa (`web_fetch_exa` when you know the
+   page's URL, or the search tools below when you don't).
+3. Fetch and read the primary source before you state a fact: official docs, a spec, the
+   upstream repo, or the vendor's own changelog, blog, release notes, or official social
+   posts. A search snippet, aggregator, affiliate review, or undated post is a lead, not
+   evidence.
+4. Pick the Exa tool by question:
+   - Vendor docs, changelogs, upstream repos: `web_search_advanced_exa` with
+     `includeDomains` set to the vendor's domains.
+   - Current releases, news, anything dated: `web_search_advanced_exa` with
+     `startPublishedDate`, plus `endPublishedDate` when the question names a closed
+     period.
+   - Open-ended questions: `web_search_exa`.
+   - Multi-hop questions: one filtered search per hop. Use `agent_run` when the list of
+     entities is long or not known up front.
+   If `web_search_advanced_exa` is not available, use `web_search_exa` with the vendor's
+   domain or the year in the query. Read pages with `web_fetch_exa`.
+   Run `curl` or `wget` on a web page only after `web_fetch_exa` failed on that page,
+   truncated it, or returned a stale copy.
+5. Stop once a primary source settles the question. A page that lacks the answer settles
+   nothing: before you say something does not exist or was not announced, run one search
+   aimed at the claim itself across the vendor's channels.
+6. Put the URL beside each web-derived claim wherever it lands: the reply, a file, a PR
+   body, or a report to another agent.
 
-## Search and Retrieval
+# Google Cloud
 
-- Prefer the most specific installed skill, connector, or repository workflow. Do not run generic research alongside it.
-- Always delegate external retrieval to a research subagent. Classify it by data source, not tool wrapper; shell commands, SDKs, connectors, MCP, browsers, user-provided URLs, small tasks, and provider failures are not exceptions.
-- Give external-research subagents a narrow task and ask for concise findings with source URLs.
-- Split mixed work as appropriate between parent or local-context inspection and external-research subagents.
-- Keep external retries, provider changes, and fallbacks inside the assigned subagent. If none is capable, report the limitation or ask before configuring one; never retrieve externally from the parent. If delegation is forbidden, perform no external retrieval.
-
-## External Routing
-
-- Focused coding or API research: `exa_code_context`.
-- Broad technical or release research: Exa-backed `web_search`; general web research: OpenAI-backed `web_search`.
-- URLs or difficult extraction: `fetch_content`; claim verification: `source_check`.
-- Long-running structured research: an MCP-capable subagent using `mcp` → `exa_agent_agent_run`.
-
-## HTML Readers
-
-When `/html` is requested for a document the user is trying to read, make a click-through reader rather than a scrolling page:
-
-- Show one idea per screen with no scrolling; support arrow keys and clicks to advance.
-- Reveal one line at a time.
-- Make every heading a full sentence that states the point.
-- Put definitions and fine print behind a click.
-- Include a progress indicator.
-- Explain for understanding; do not pitch or skip the setup.
-
-## Changing Existing Code
-
-- Old code that looks wrong may encode years of constraints. Find out why it works before changing it.
-- Trace the caller before calling something a bug. State what breaks for a user today; if nothing breaks, report that and stop.
-- Treat docstrings, comments, and vendor documentation as leads, not sufficient evidence. Prefer traced code or observed output.
-- Get user approval before changing behavior. State the before and after in one line.
-- If you reverse a conclusion once, stop and list every assumption as proven or unproven.
-- Never conclude beyond what you tested. Name the cases you skipped.
-- If the user questions the work, respond with a smaller answer, not a bigger change.
+Always prefer the installed `gcloud` CLI when interacting with Google Cloud.
+Use it first for resource queries, logs, builds, and operations. Use the browser
+only when the CLI cannot perform the action or when human sign-in is required.

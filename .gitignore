@@ -1,5 +1,6 @@
-# Credentials and machine trust
+# Credentials and machine trust (NEVER commit)
 /auth.json
+/mcp-auth.json
 /trust.json
 .env
 .env.*
@@ -8,16 +9,17 @@
 
 # Runtime state and generated data
 /sessions/
+/pstack/
+/bin/
 /artifacts/
 /tmp/
 /run-history.jsonl
 /mcp-cache.json
 /models-store.json
 
-# Pi-managed package installations, clones, and skill links
+# Pi-managed package installations and clones (reconciled via `pi update --extensions`)
 /npm/
 /git/
-/skills/
 
 # Dependencies and build output
 node_modules/
@@ -32,6 +34,8 @@ __pycache__/
 *.swp
 *.swo
 *~
+*.bak
+*.tmp
 
 # Local-only overrides
 *.local.*

@@ -1,40 +1,71 @@
 {
-  "lastChangelogVersion": "0.83.0",
-  "theme": "dark",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-sol",
-  "hideThinkingBlock": true,
-  "defaultThinkingLevel": "high",
-  "subagents": {
-    "agentOverrides": {
-      "scout": {
-        "model": "openai-codex/gpt-5.6-sol",
-        "thinking": "medium"
+  "packages": [
+    "git:github.com/michael-denyer/pstack-claude",
+    "npm:@plannotator/pi-extension",
+    "git:github.com/nicobailon/visual-explainer"
+  ],
+  "skills": [
+    "-skills/visual-explainer"
+  ],
+  "deviceId": "81658aeb-304c-4027-9992-34d70e4e51a6",
+  "defaultProvider": "google",
+  "defaultModel": "gemini-4-argon",
+  "defaultThinkingLevel": "medium",
+  "modelThinkingLevels": {
+    "anthropic/claude-fable-5-1": "high",
+    "anthropic/claude-opus-5-5": "medium"
+  },
+  "lastChangelogVersion": "1.4.0",
+  "compaction": {
+    "modelOverrides": {
+      "google/gemini-4-argon": {
+        "reserveTokens": 728576,
+        "keepRecentTokens": 48000
       },
-      "researcher": {
-        "model": "openai-codex/gpt-5.6-sol",
-        "thinking": "medium"
+      "anthropic/claude-fable-5-1": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
       },
-      "context-builder": {
-        "model": "openai-codex/gpt-5.6-sol",
-        "thinking": "medium"
+      "anthropic/claude-fable-5": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
       },
-      "worker": {
-        "model": "openai-codex/gpt-5.6-sol",
-        "thinking": "high"
+      "anthropic/claude-opus-5-5": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
+      },
+      "anthropic/claude-opus-5": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
+      },
+      "anthropic/claude-opus-4-8": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
+      },
+      "anthropic/claude-opus-4-7": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
+      },
+      "anthropic/claude-opus-4-6": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
+      },
+      "anthropic/claude-sonnet-5-5": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
+      },
+      "anthropic/claude-sonnet-5": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
+      },
+      "anthropic/claude-sonnet-4-6": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
+      },
+      "anthropic/claude-haiku-5-5": {
+        "reserveTokens": 680000,
+        "keepRecentTokens": 48000
       }
     }
-  },
-  "packages": [
-    "npm:pi-web-access",
-    "npm:@plannotator/pi-extension",
-    "npm:pi-subagents",
-    "npm:pi-mcp-adapter",
-    "npm:@diegopetrucci/pi-openai-fast",
-    "npm:pi-tool-display",
-    "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:@juicesharp/rpiv-todo",
-    "npm:pi-btw",
-    "npm:@injaneity/pi-computer-use@0.5.0"
-  ]
+  }
 }

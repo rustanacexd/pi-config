@@ -1,0 +1,16 @@
+{
+  "$schema": "https://pi.dev/schemas/models.schema.json",
+  "providers": {
+    "google": {
+      "modelOverrides": {
+        "gemini-4-argon": {
+          "maxTokens": 65536
+        }
+      }
+    },
+    "anthropic": {
+      "baseUrl": "http://127.0.0.1:8317",
+      "apiKey": "123456"
+    }
+  }
+}

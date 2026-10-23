@@ -1,28 +1,14 @@
 {
   "mcpServers": {
-    "exa-agent": {
-      "url": "https://mcp.exa.ai/mcp?tools=agent_tools",
-      "auth": "bearer",
-      "bearerTokenEnv": "EXA_API_KEY",
-      "lifecycle": "lazy",
-      "requestTimeoutMs": 900000
+    "exa": {
+      "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,agent_run,web_search_advanced_exa",
+      "headers": {
+        "Authorization": "!zsh -lc 'test -n \"$EXA_API_KEY\" && printf \"Bearer %s\" \"$EXA_API_KEY\"'"
+      },
+      "exposure": "direct"
     },
-    "playwright": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@playwright/mcp@0.0.78",
-        "--headless",
-        "--isolated"
-      ],
-      "lifecycle": "lazy",
-      "includeTools": [
-        "browser_navigate",
-        "browser_snapshot",
-        "browser_close",
-        "browser_tabs"
-      ],
-      "requestTimeoutMs": 120000
+    "notion": {
+      "url": "https://mcp.notion.com/mcp"
     }
   }
 }
