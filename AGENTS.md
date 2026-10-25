@@ -4,18 +4,6 @@ Follow a named skill's supplied instructions or read its SKILL.md and runtime ma
 (`pi-tools.md` for pstack skills).
 Pi has no built-in task tracker; when a workflow tracks tasks, use `todo.md`.
 
-# T3 Code only
-
-In T3 Code, use `google/gemini-4-argon`, `openai/gpt-6.1-sol`, `openai/gpt-6-astra`, and
-`anthropic/claude-opus-5-5` for the `arena runners`, `architect runners`, and
-`interrogate reviewers` role lists.
-Follow pstack for workflow, effort, judging, unavailable-model handling, and review
-requirements.
-
-For cross-provider members, use T3's `delegate_task` with providers and models from
-`orchestrator_capabilities`, preserving pstack's resolved task instructions and model
-options. Set `interactionMode: "default"` when delegating execution tasks.
-
 # Search routing
 
 1. Check local sources first: the conversation, the repo, installed skills and connectors,
