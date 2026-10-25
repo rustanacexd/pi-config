@@ -9,8 +9,8 @@
     "-skills/visual-explainer"
   ],
   "deviceId": "81658aeb-304c-4027-9992-34d70e4e51a6",
-  "defaultProvider": "google",
-  "defaultModel": "gemini-4-argon",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-5-5",
   "defaultThinkingLevel": "medium",
   "modelThinkingLevels": {
     "anthropic/claude-fable-5-1": "high",
