@@ -35,8 +35,6 @@ The repository tracks configuration and local extensions. The Wondering credenti
 
 [`settings.json`](settings.json) selects Anthropic `claude-opus-5-5` with medium thinking by default. The enabled model list includes Opus, Sonnet, Fable, and two OpenAI models. Per-model thinking levels and compaction reserves are configured in the same file. Codex Fast is enabled in `ultrafast` mode.
 
-[`models.json`](models.json) keeps a 65,536-token output override for Google `gemini-4-argon`. It no longer redirects Anthropic requests to a local proxy.
-
 ## MCP servers
 
 [`mcp.json`](mcp.json) configures these servers:
