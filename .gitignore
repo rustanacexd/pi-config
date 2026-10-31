@@ -16,6 +16,7 @@
 /run-history.jsonl
 /mcp-cache.json
 /models-store.json
+/cliproxyapi-models.json
 
 # Pi-managed package installations and clones (reconciled via `pi update --extensions`)
 /npm/
