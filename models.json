@@ -1,6 +1,13 @@
 {
   "$schema": "https://pi.dev/schemas/models.schema.json",
   "providers": {
+    "openai": {
+      "modelOverrides": {
+        "gpt-6.1-sol": {
+          "contextWindow": 500000
+        }
+      }
+    },
     "google": {
       "modelOverrides": {
         "gemini-4-argon": {

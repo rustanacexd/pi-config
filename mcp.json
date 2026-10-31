@@ -3,7 +3,7 @@
     "exa": {
       "url": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,agent_run,web_search_advanced_exa",
       "headers": {
-        "Authorization": "!zsh -lc 'test -n \"$EXA_API_KEY\" && printf \"Bearer %s\" \"$EXA_API_KEY\"'"
+        "Authorization": "Bearer ${EXA_API_KEY}"
       },
       "exposure": "direct"
     },
@@ -13,7 +13,7 @@
     "wondering": {
       "url": "https://mvhwfzawowaxyivkmjdv.supabase.co/functions/v1/mcp",
       "headers": {
-        "Authorization": "!zsh -c 'printf \"Bearer %s\" \"$(security find-generic-password -s wondering-mcp -w)\"'"
+        "Authorization": "Bearer ${WONDERING_API_KEY}"
       },
       "description": "Wondering learning platform: learning history, courses, lessons; create courses and insert lessons."
     }

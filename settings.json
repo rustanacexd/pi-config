@@ -1,11 +1,10 @@
 {
   "packages": [
-    "git:github.com/michael-denyer/pstack-claude",
-    "npm:@plannotator/pi-extension",
-    "npm:@calesennett/pi-codex-fast",
-    "git:github.com/plannotator/effective-html"
+    "git:github.com/michael-denyer/pstack-claude@5851c89613e2ddc3a6b7f4af02a42363b30ef8d3",
+    "npm:@plannotator/pi-extension@0.28.40",
+    "npm:@calesennett/pi-codex-fast@0.1.13",
+    "git:github.com/plannotator/effective-html@e9e256e36270a359d0f6c89b3b33f41778ba6dce"
   ],
-  "deviceId": "81658aeb-304c-4027-9992-34d70e4e51a6",
   "defaultProvider": "anthropic",
   "defaultModel": "claude-opus-5-5",
   "enabledModels": [
