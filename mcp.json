@@ -16,16 +16,6 @@
         "Authorization": "!zsh -c 'printf \"Bearer %s\" \"$(security find-generic-password -s wondering-mcp -w)\"'"
       },
       "description": "Wondering learning platform: learning history, courses, lessons; create courses and insert lessons."
-    },
-    "open-design": {
-      "command": "/Users/rustancorpuz/.nvm/versions/node/v22.22.0/bin/node",
-      "args": ["~/.pi/agent/scripts/open-design-mcp.mjs"],
-      "env": {
-        "OD_DATA_DIR": "/Users/rustancorpuz/Library/Application Support/Open Design/namespaces/release-stable/data",
-        "OD_SIDECAR_CLIENT_ENDPOINT": "/var/folders/wp/s0_cmzzx3sq1psmymbqhtmdw0000gn/T/od-sidecar-501/2c8aed90933f3fe8a7d97ce765ace5d3.sock"
-      },
-      "description": "Open Design tools. Connects only while the Open Design app is open; never launches it.",
-      "exposure": "direct"
     }
   }
 }

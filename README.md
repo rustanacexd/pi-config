@@ -2,7 +2,7 @@
 
 Personal configuration for [Pi](https://github.com/earendil-works/pi/tree/main/packages/coding-agent), including packages, MCP servers, model defaults, `pstack` role mappings, and global agent instructions.
 
-The repository tracks configuration, local extensions, and helper scripts. Some paths are specific to this macOS machine and need adjustment on another machine. Credentials (`auth.json`, `mcp-auth.json`), machine trust (`trust.json`), session transcripts (`sessions/`, `pstack/`), and generated package installs (`git/`, `npm/`) are excluded through [`.gitignore`](.gitignore).
+The repository tracks configuration and local extensions. The Wondering credential setup uses macOS Keychain. Credentials (`auth.json`, `mcp-auth.json`), machine trust (`trust.json`), session transcripts (`sessions/`, `pstack/`), and generated package installs (`git/`, `npm/`) are excluded through [`.gitignore`](.gitignore).
 
 ## Bootstrap on a new machine
 
@@ -19,7 +19,6 @@ The repository tracks configuration, local extensions, and helper scripts. Some 
    - Launch `pi` and run `/login` to authenticate model providers.
    - Authenticate Notion through its MCP OAuth flow.
    - For Wondering, add the bearer token to macOS Keychain as a generic password with the service name `wondering-mcp`.
-4. Adjust the machine-specific Open Design paths in [`mcp.json`](mcp.json), including the Node executable, data directory, and sidecar socket. The helper does not launch Open Design. When the app is unavailable, it exposes no tools.
 
 ## Configured packages
 
@@ -47,24 +46,3 @@ The repository tracks configuration, local extensions, and helper scripts. Some 
 | Exa | Remote MCP with a bearer token resolved from `$EXA_API_KEY` through a login shell. |
 | Notion | Remote MCP with OAuth. |
 | Wondering | Remote MCP for learning history, courses, and lessons. Reads its bearer token from the macOS Keychain service `wondering-mcp`. |
-| Open Design | Local helper that connects to the running app or returns empty tool lists. Uses machine-specific paths and a sidecar socket. |
-
-## Local Orca extensions
-
-- [`orca-prefill.ts`](extensions/orca-prefill.ts) copies `ORCA_PI_PREFILL` into the editor at startup inside an Orca pane, then removes the environment variable. It does not submit the prompt.
-- [`orca-titlebar-spinner.ts`](extensions/orca-titlebar-spinner.ts) animates the terminal title during work and compaction, and shows `!` while Pi waits for dialog input.
-- [`orca-agent-status.ts`](extensions/orca-agent-status.ts) reports session, tool, dialog, and subagent activity to Orca's authenticated localhost hook.
-
-Status reports can include prompt text, assistant text, and tool arguments. The extension filters some credential-related paths, but does not provide general secret redaction.
-
-## Tracked files
-
-- [`AGENTS.md`](AGENTS.md) contains global instructions for skill routing, Exa search routing, and Google Cloud operations.
-- [`settings.json`](settings.json) declares packages, model defaults, compaction reserves, and Codex Fast settings.
-- [`pstack-models.md`](pstack-models.md) sets per-role model and reasoning effort overrides for `pstack`.
-- [`models.json`](models.json) defines model token overrides.
-- [`mcp.json`](mcp.json) configures the MCP servers.
-- [`extensions/`](extensions/) contains local Orca integration extensions.
-- [`scripts/open-design-mcp.mjs`](scripts/open-design-mcp.mjs) connects to Open Design without launching the app.
-
-The old `visual-explainer-*` wrapper skills have been removed. HTML skills now come from the `effective-html` package.
