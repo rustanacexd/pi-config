@@ -15,7 +15,8 @@
       "headers": {
         "Authorization": "Bearer ${WONDERING_API_KEY}"
       },
-      "description": "Wondering learning platform: learning history, courses, lessons; create courses and insert lessons."
+      "description": "Wondering learning platform: learning history, courses, lessons; create courses and insert lessons.",
+      "enabled": false
     }
   }
 }

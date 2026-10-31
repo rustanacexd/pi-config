@@ -3,16 +3,18 @@
     "git:github.com/michael-denyer/pstack-claude@5851c89613e2ddc3a6b7f4af02a42363b30ef8d3",
     "npm:@plannotator/pi-extension@0.28.40",
     "npm:@calesennett/pi-codex-fast@0.1.13",
-    "git:github.com/plannotator/effective-html@e9e256e36270a359d0f6c89b3b33f41778ba6dce"
+    "git:github.com/plannotator/effective-html@e9e256e36270a359d0f6c89b3b33f41778ba6dce",
+    "npm:@router-for-me/pi-cliproxyapi-provider@1.4.24"
   ],
   "defaultProvider": "anthropic",
   "defaultModel": "claude-opus-5-5",
   "enabledModels": [
-    "anthropic/claude-opus-5-5",
-    "anthropic/claude-sonnet-5-5",
-    "anthropic/claude-fable-5-1",
+    "cliproxyapi/claude-opus-5-5",
+    "cliproxyapi/claude-sonnet-5-5",
+    "cliproxyapi/claude-fable-5-1",
     "openai/gpt-6.1-sol",
-    "openai/gpt-6-astra"
+    "openai/gpt-6-astra",
+    "google/gemini-4-argon"
   ],
   "defaultThinkingLevel": "medium",
   "modelThinkingLevels": {
