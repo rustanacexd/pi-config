@@ -2,7 +2,7 @@
 
 Personal configuration for [Pi](https://github.com/earendil-works/pi/tree/main/packages/coding-agent), including packages, MCP servers, model defaults, `pstack` role mappings, and global agent instructions.
 
-The repository tracks shareable configuration only. Credentials (`auth.json`, `mcp-auth.json`), machine trust (`trust.json`), session transcripts (`sessions/`, `pstack/`), and generated package installs (`git/`, `npm/`) are excluded through [`.gitignore`](.gitignore).
+The repository tracks configuration, local extensions, and helper scripts. Some paths are specific to this macOS machine and need adjustment on another machine. Credentials (`auth.json`, `mcp-auth.json`), machine trust (`trust.json`), session transcripts (`sessions/`, `pstack/`), and generated package installs (`git/`, `npm/`) are excluded through [`.gitignore`](.gitignore).
 
 ## Bootstrap on a new machine
 
@@ -16,7 +16,10 @@ The repository tracks shareable configuration only. Credentials (`auth.json`, `m
    ```
 3. Configure credentials:
    - Export `EXA_API_KEY` in your shell profile (`~/.zshrc`) for the Exa MCP server.
-   - Launch `pi` and run `/login` to authenticate model providers and OAuth MCP servers (such as Notion).
+   - Launch `pi` and run `/login` to authenticate model providers.
+   - Authenticate Notion through its MCP OAuth flow.
+   - For Wondering, add the bearer token to macOS Keychain as a generic password with the service name `wondering-mcp`.
+4. Adjust the machine-specific Open Design paths in [`mcp.json`](mcp.json), including the Node executable, data directory, and sidecar socket. The helper does not launch Open Design. When the app is unavailable, it exposes no tools.
 
 ## Configured packages
 
@@ -26,14 +29,42 @@ The repository tracks shareable configuration only. Credentials (`auth.json`, `m
 | --- | --- | --- |
 | [`pstack-claude`](https://github.com/michael-denyer/pstack-claude) | `git:github.com/michael-denyer/pstack-claude` | Workflows, principles, and multi-model subagent orchestration (`poteto-mode`, `architect`, `arena`, `interrogate`, `how`, `why`, etc.). |
 | [`@plannotator/pi-extension`](https://github.com/backnotprop/plannotator/tree/main/apps/pi-extension) | `npm:@plannotator/pi-extension` | Interactive review and annotation for plans, code diffs, and pull requests. |
-| [`visual-explainer`](https://github.com/nicobailon/visual-explainer) | `git:github.com/nicobailon/visual-explainer` | Self-contained HTML visual explanations, diagrams, diff/plan reviews, and slide decks. |
+| [`effective-html`](https://github.com/plannotator/effective-html) | `git:github.com/plannotator/effective-html` | Skills for self-contained HTML artifacts, diagrams, plans, prototypes, and wireframes. |
 | [`@calesennett/pi-codex-fast`](https://pi.dev/packages/@calesennett/pi-codex-fast) | `npm:@calesennett/pi-codex-fast` | Fast (`priority`) and Ultrafast (`ultrafast`) service tiers for OpenAI and ChatGPT Codex models (`/codex-fast`, `/codex-ultrafast`, `--fast`, `--ultrafast`). |
+
+## Model defaults
+
+[`settings.json`](settings.json) selects Anthropic `claude-opus-5-5` with medium thinking by default. The enabled model list includes Opus, Sonnet, Fable, and two OpenAI models. Per-model thinking levels and compaction reserves are configured in the same file. Codex Fast is enabled in `ultrafast` mode.
+
+[`models.json`](models.json) keeps a 65,536-token output override for Google `gemini-4-argon`. It no longer redirects Anthropic requests to a local proxy.
+
+## MCP servers
+
+[`mcp.json`](mcp.json) configures these servers:
+
+| Server | Connection and credentials |
+| --- | --- |
+| Exa | Remote MCP with a bearer token resolved from `$EXA_API_KEY` through a login shell. |
+| Notion | Remote MCP with OAuth. |
+| Wondering | Remote MCP for learning history, courses, and lessons. Reads its bearer token from the macOS Keychain service `wondering-mcp`. |
+| Open Design | Local helper that connects to the running app or returns empty tool lists. Uses machine-specific paths and a sidecar socket. |
+
+## Local Orca extensions
+
+- [`orca-prefill.ts`](extensions/orca-prefill.ts) copies `ORCA_PI_PREFILL` into the editor at startup inside an Orca pane, then removes the environment variable. It does not submit the prompt.
+- [`orca-titlebar-spinner.ts`](extensions/orca-titlebar-spinner.ts) animates the terminal title during work and compaction, and shows `!` while Pi waits for dialog input.
+- [`orca-agent-status.ts`](extensions/orca-agent-status.ts) reports session, tool, dialog, and subagent activity to Orca's authenticated localhost hook.
+
+Status reports can include prompt text, assistant text, and tool arguments. The extension filters some credential-related paths, but does not provide general secret redaction.
 
 ## Tracked files
 
-- [`AGENTS.md`](AGENTS.md) — Global instructions for skill routing, T3 Code delegation, Exa search routing, and `gcloud` usage.
-- [`settings.json`](settings.json) — Default model/provider, compaction token overrides, and package declarations.
-- [`pstack-models.md`](pstack-models.md) — Per-role model and reasoning effort overrides for `pstack`.
-- [`models.json`](models.json) — Provider endpoint configuration and model token overrides.
-- [`mcp.json`](mcp.json) — Global MCP servers (`exa` with shell-resolved `$EXA_API_KEY` and `notion` via OAuth).
-- [`skills/`](skills/) — Split `visual-explainer-*` command skills that delegate to the installed `visual-explainer` package.
+- [`AGENTS.md`](AGENTS.md) contains global instructions for skill routing, Exa search routing, and Google Cloud operations.
+- [`settings.json`](settings.json) declares packages, model defaults, compaction reserves, and Codex Fast settings.
+- [`pstack-models.md`](pstack-models.md) sets per-role model and reasoning effort overrides for `pstack`.
+- [`models.json`](models.json) defines model token overrides.
+- [`mcp.json`](mcp.json) configures the MCP servers.
+- [`extensions/`](extensions/) contains local Orca integration extensions.
+- [`scripts/open-design-mcp.mjs`](scripts/open-design-mcp.mjs) connects to Open Design without launching the app.
+
+The old `visual-explainer-*` wrapper skills have been removed. HTML skills now come from the `effective-html` package.

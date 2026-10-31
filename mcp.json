@@ -10,6 +10,13 @@
     "notion": {
       "url": "https://mcp.notion.com/mcp"
     },
+    "wondering": {
+      "url": "https://mvhwfzawowaxyivkmjdv.supabase.co/functions/v1/mcp",
+      "headers": {
+        "Authorization": "!zsh -c 'printf \"Bearer %s\" \"$(security find-generic-password -s wondering-mcp -w)\"'"
+      },
+      "description": "Wondering learning platform: learning history, courses, lessons; create courses and insert lessons."
+    },
     "open-design": {
       "command": "/Users/rustancorpuz/.nvm/versions/node/v22.22.0/bin/node",
       "args": ["~/.pi/agent/scripts/open-design-mcp.mjs"],

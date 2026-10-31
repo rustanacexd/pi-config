@@ -2,15 +2,19 @@
   "packages": [
     "git:github.com/michael-denyer/pstack-claude",
     "npm:@plannotator/pi-extension",
-    "git:github.com/nicobailon/visual-explainer",
-    "npm:@calesennett/pi-codex-fast"
-  ],
-  "skills": [
-    "-skills/visual-explainer"
+    "npm:@calesennett/pi-codex-fast",
+    "git:github.com/plannotator/effective-html"
   ],
   "deviceId": "81658aeb-304c-4027-9992-34d70e4e51a6",
   "defaultProvider": "anthropic",
   "defaultModel": "claude-opus-5-5",
+  "enabledModels": [
+    "anthropic/claude-opus-5-5",
+    "anthropic/claude-sonnet-5-5",
+    "anthropic/claude-fable-5-1",
+    "openai/gpt-6.1-sol",
+    "openai/gpt-6-astra"
+  ],
   "defaultThinkingLevel": "medium",
   "modelThinkingLevels": {
     "anthropic/claude-fable-5-1": "high",
@@ -19,54 +23,31 @@
   "lastChangelogVersion": "1.4.0",
   "compaction": {
     "modelOverrides": {
-      "google/gemini-4-argon": {
-        "reserveTokens": 728576,
-        "keepRecentTokens": 48000
-      },
       "anthropic/claude-fable-5-1": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
+        "reserveTokens": 500000
       },
       "anthropic/claude-fable-5": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
+        "reserveTokens": 680000
       },
       "anthropic/claude-opus-5-5": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
+        "reserveTokens": 500000
       },
       "anthropic/claude-opus-5": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
-      },
-      "anthropic/claude-opus-4-8": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
-      },
-      "anthropic/claude-opus-4-7": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
-      },
-      "anthropic/claude-opus-4-6": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
+        "reserveTokens": 680000
       },
       "anthropic/claude-sonnet-5-5": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
+        "reserveTokens": 500000
       },
       "anthropic/claude-sonnet-5": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
-      },
-      "anthropic/claude-sonnet-4-6": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
+        "reserveTokens": 680000
       },
       "anthropic/claude-haiku-5-5": {
-        "reserveTokens": 680000,
-        "keepRecentTokens": 48000
+        "reserveTokens": 680000
       }
     }
+  },
+  "pi-codex-fast": {
+    "enabled": true,
+    "mode": "ultrafast"
   }
 }

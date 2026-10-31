@@ -7,10 +7,6 @@
           "maxTokens": 65536
         }
       }
-    },
-    "anthropic": {
-      "baseUrl": "http://127.0.0.1:8317",
-      "apiKey": "123456"
     }
   }
 }
