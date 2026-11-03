@@ -24,7 +24,6 @@
     "google/gemini-4-argon"
   ],
   "defaultThinkingLevel": "high",
-  "hideThinkingBlock": true,
   "quietStartup": true,
   "collapseChangelog": true,
   "modelThinkingLevels": {
