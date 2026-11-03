@@ -14,12 +14,12 @@ why investigators: inherit-parent
 why synthesizer: inherit-parent
 reflect tooling: inherit-parent
 reflect judgment, divergent, synthesizer: inherit-parent
-arena runners: opus, sonnet, openai/gpt-6-astra @high, openai/gpt-6.1-sol @high, google/gemini-4-argon @high
-arena cross-judge pool: opus, sonnet, openai/gpt-6-astra @high, openai/gpt-6.1-sol @high, google/gemini-4-argon @high
+arena runners: google/gemini-4-argon @high, opus @xhigh, openai/gpt-6.1-sol @high
+arena cross-judge pool: fable @xhigh, google/gemini-4-argon @high, openai/gpt-6.1-sol @high
 swarm workers: inherit-parent
-architect runners: opus, sonnet, openai/gpt-6-astra @high, openai/gpt-6.1-sol @high, google/gemini-4-argon @high
-interrogate reviewers: opus, sonnet, openai/gpt-6-astra @high, openai/gpt-6.1-sol @high, google/gemini-4-argon @high
+architect runners: google/gemini-4-argon @high, opus @xhigh, openai/gpt-6.1-sol @high
+interrogate reviewers: google/gemini-4-argon @high, opus @xhigh, openai/gpt-6.1-sol @high
 
-pi models: opus=cliproxyapi/claude-opus-5-5, sonnet=cliproxyapi/claude-sonnet-5-5
+pi models: opus=cliproxyapi/claude-opus-5-5, sonnet=cliproxyapi/claude-sonnet-5-5, fable=cliproxyapi/claude-fable-5-1
 default effort: session
 session hook: on

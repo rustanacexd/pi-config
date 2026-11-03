@@ -17,6 +17,8 @@
 /mcp-cache.json
 /models-store.json
 /cliproxyapi-models.json
+/web-search-cache/
+/pi-web-access/
 
 # Pi-managed package installations and clones (reconciled via `pi update --extensions`)
 /npm/
@@ -36,6 +38,7 @@ __pycache__/
 *.swo
 *~
 *.bak
+*.bak-*
 *.tmp
 
 # Local-only overrides

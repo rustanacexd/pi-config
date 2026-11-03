@@ -4,6 +4,10 @@ Follow a named skill's supplied instructions or read its SKILL.md and runtime ma
 (`pi-tools.md` for pstack skills).
 Pi has no built-in task tracker; when a workflow tracks tasks, use `todo.md`.
 
+# HTML artifacts
+
+Edit an HTML file in place inside a git repo (`git init` if none) and commit each change; never keep backup, work or test copies.
+
 # Google Cloud
 
 Always prefer the installed `gcloud` CLI when interacting with Google Cloud.

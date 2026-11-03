@@ -3,8 +3,15 @@
     "git:github.com/michael-denyer/pstack-claude@5851c89613e2ddc3a6b7f4af02a42363b30ef8d3",
     "npm:@plannotator/pi-extension@0.28.40",
     "npm:@calesennett/pi-codex-fast@0.1.13",
-    "git:github.com/plannotator/effective-html@e9e256e36270a359d0f6c89b3b33f41778ba6dce",
-    "npm:@router-for-me/pi-cliproxyapi-provider@1.4.24"
+    {
+      "source": "git:github.com/plannotator/effective-html@e9e256e36270a359d0f6c89b3b33f41778ba6dce",
+      "skills": [
+        "!big-pics-little-words"
+      ]
+    },
+    "npm:@router-for-me/pi-cliproxyapi-provider@1.4.24",
+    "npm:pi-btw",
+    "npm:pi-web-access"
   ],
   "defaultProvider": "anthropic",
   "defaultModel": "claude-opus-5-5",
@@ -44,11 +51,35 @@
       },
       "anthropic/claude-haiku-5-5": {
         "reserveTokens": 680000
+      },
+      "cliproxyapi/claude-fable-5-1": {
+        "reserveTokens": 500000
+      },
+      "cliproxyapi/claude-fable-5": {
+        "reserveTokens": 680000
+      },
+      "cliproxyapi/claude-opus-5-5": {
+        "reserveTokens": 500000
+      },
+      "cliproxyapi/claude-opus-5": {
+        "reserveTokens": 680000
+      },
+      "cliproxyapi/claude-sonnet-5-5": {
+        "reserveTokens": 500000
+      },
+      "cliproxyapi/claude-sonnet-5": {
+        "reserveTokens": 680000
+      },
+      "cliproxyapi/claude-haiku-5-5": {
+        "reserveTokens": 680000
       }
     }
   },
   "pi-codex-fast": {
     "enabled": true,
     "mode": "ultrafast"
+  },
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.46.0"
   }
 }
