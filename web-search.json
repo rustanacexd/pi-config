@@ -1,3 +1,5 @@
 {
-  "exaApiKey": "${EXA_API_KEY}"
+  "exaApiKey": "${EXA_API_KEY}",
+  "workflow": "none",
+  "autoOpenBrowser": false
 }
