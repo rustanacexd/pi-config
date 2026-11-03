@@ -28,8 +28,28 @@ import {
 	formatReadLineRange,
 	renderDiff,
 } from "@earendil-works/pi-coding-agent";
-import { Text } from "@earendil-works/pi-tui";
+import { type Component, Text, truncateToWidth } from "@earendil-works/pi-tui";
 import { homedir } from "os";
+
+const BUILT_IN_TOOLS = new Set(["read", "bash", "edit", "write", "find", "grep", "ls"]);
+const SUMMARY_KEYS = ["description", "command", "query", "queries", "claim", "url", "urls", "path", "prompt", "message", "to", "id", "code"];
+
+class OneLine implements Component {
+	constructor(private readonly text: string) {}
+	render(width: number): string[] {
+		return [truncateToWidth(this.text, width, "…")];
+	}
+	invalidate(): void {}
+}
+
+function summarizeArgs(args: unknown): string {
+	if (!args || typeof args !== "object") return "";
+	const record = args as Record<string, unknown>;
+	const key = SUMMARY_KEYS.find((k) => record[k] != null && record[k] !== "");
+	const value = key ? record[key] : record;
+	const text = typeof value === "string" ? value : JSON.stringify(value);
+	return text.replace(/\s+/g, " ").trim();
+}
 
 /**
  * Shorten a path by replacing home directory with ~
@@ -56,6 +76,33 @@ function createBuiltInTools(cwd: string) {
 
 export default function (pi: ExtensionAPI) {
 	const tools = createBuiltInTools(process.cwd());
+
+	// Every other tool (extension, MCP, codemode, agent...): one call line, output only when expanded.
+	pi.registerToolRenderer((toolName, next) => {
+		if (BUILT_IN_TOOLS.has(toolName)) return next();
+		const base = next();
+		return {
+			renderShell: "default",
+			renderCall(args, theme, context) {
+				if (context.expanded && base?.renderCall) {
+					return base.renderCall(args, theme, { ...context, lastComponent: undefined });
+				}
+				return new OneLine(`${theme.fg("toolTitle", theme.bold(toolName))} ${theme.fg("muted", summarizeArgs(args))}`);
+			},
+			renderResult(result, options, theme, context) {
+				if (!options.expanded) return new Text("", 0, 0);
+				if (base?.renderResult) {
+					return base.renderResult(result, options, theme, { ...context, lastComponent: undefined });
+				}
+				const output = result.content
+					.filter((c) => c.type === "text")
+					.map((c) => (c.type === "text" ? c.text : ""))
+					.join("\n")
+					.trim();
+				return new Text(output ? `\n${theme.fg("toolOutput", output)}` : "", 0, 0);
+			},
+		};
+	});
 
 	// =========================================================================
 	// Read Tool
@@ -100,11 +147,15 @@ export default function (pi: ExtensionAPI) {
 		...tools.bash,
 
 		renderCall(args, theme, _context) {
-			const command = args.command || "...";
+			const lines = (args.command || "...").trim().split("\n");
+			const more = lines.length > 1 ? theme.fg("muted", ` (+${lines.length - 1} lines)`) : "";
 			const timeout = args.timeout as number | undefined;
 			const timeoutSuffix = timeout ? theme.fg("muted", ` (timeout ${timeout}s)`) : "";
 
-			return new Text(theme.fg("toolTitle", theme.bold(`$ ${command}`)) + timeoutSuffix, 0, 0);
+			if (_context.expanded) {
+				return new Text(theme.fg("toolTitle", theme.bold(`$ ${lines.join("\n")}`)) + timeoutSuffix, 0, 0);
+			}
+			return new OneLine(theme.fg("toolTitle", theme.bold(`$ ${lines[0]}`)) + more + timeoutSuffix);
 		},
 
 		renderResult(result, { expanded }, theme, _context) {
