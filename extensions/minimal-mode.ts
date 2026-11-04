@@ -31,7 +31,6 @@ import {
 import { type Component, Text, truncateToWidth } from "@earendil-works/pi-tui";
 import { homedir } from "os";
 
-const BUILT_IN_TOOLS = new Set(["read", "bash", "edit", "write", "find", "grep", "ls"]);
 const SUMMARY_KEYS = ["description", "command", "query", "queries", "claim", "url", "urls", "path", "prompt", "message", "to", "id", "code"];
 
 const KEEP_FRACTION = 0.25;
@@ -85,14 +84,14 @@ function createBuiltInTools(cwd: string) {
 export default function (pi: ExtensionAPI) {
 	const tools = createBuiltInTools(process.cwd());
 
-	// Every other tool (extension, MCP, codemode, agent...): one call line, output only when expanded.
+	// Collapsed: every tool call is invisible (a self shell with no lines draws nothing). Ctrl+O shows them.
 	pi.registerToolRenderer((toolName, next) => {
-		if (BUILT_IN_TOOLS.has(toolName)) return next();
 		const base = next();
 		return {
-			renderShell: "default",
+			renderShell: "self",
 			renderCall(args, theme, context) {
-				if (context.expanded && base?.renderCall) {
+				if (!context.expanded) return new Text("", 0, 0);
+				if (base?.renderCall) {
 					return base.renderCall(args, theme, { ...context, lastComponent: undefined });
 				}
 				return new OneLine(`${theme.fg("toolTitle", theme.bold(toolName))} ${theme.fg("muted", quarter(summarizeArgs(args)))}`);
