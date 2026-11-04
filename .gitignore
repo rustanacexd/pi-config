@@ -8,6 +8,8 @@
 *.key
 
 # Runtime state and generated data
+.audit/
+/.claude/worktrees/
 /sessions/
 /pstack/
 /bin/
