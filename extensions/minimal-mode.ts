@@ -34,14 +34,10 @@ import { homedir } from "os";
 const BUILT_IN_TOOLS = new Set(["read", "bash", "edit", "write", "find", "grep", "ls"]);
 const SUMMARY_KEYS = ["description", "command", "query", "queries", "claim", "url", "urls", "path", "prompt", "message", "to", "id", "code"];
 
-const CALL_WIDTH_FRACTION = 0.25;
-const MIN_CALL_WIDTH = 20;
-
 class OneLine implements Component {
 	constructor(private readonly text: string) {}
 	render(width: number): string[] {
-		const budget = Math.min(width, Math.max(MIN_CALL_WIDTH, Math.floor(width * CALL_WIDTH_FRACTION)));
-		return [truncateToWidth(this.text, budget, "…")];
+		return [truncateToWidth(this.text, width, "…")];
 	}
 	invalidate(): void {}
 }
@@ -123,7 +119,7 @@ export default function (pi: ExtensionAPI) {
 				pathDisplay += theme.fg("warning", lineRange);
 			}
 
-			return new OneLine(`${theme.fg("toolTitle", theme.bold("read"))} ${pathDisplay}`);
+			return new Text(`${theme.fg("toolTitle", theme.bold("read"))} ${pathDisplay}`, 0, 0);
 		},
 
 		renderResult(result, { expanded }, theme, _context) {
@@ -200,7 +196,7 @@ export default function (pi: ExtensionAPI) {
 			const lineCount = args.content ? args.content.split("\n").length : 0;
 			const lineInfo = lineCount > 0 ? theme.fg("muted", ` (${lineCount} lines)`) : "";
 
-			return new OneLine(`${theme.fg("toolTitle", theme.bold("write"))} ${pathDisplay}${lineInfo}`);
+			return new Text(`${theme.fg("toolTitle", theme.bold("write"))} ${pathDisplay}${lineInfo}`, 0, 0);
 		},
 
 		renderResult(result, { expanded }, theme, _context) {
@@ -232,7 +228,7 @@ export default function (pi: ExtensionAPI) {
 			const path = shortenPath(args.path || "");
 			const pathDisplay = path ? theme.fg("accent", path) : theme.fg("toolOutput", "...");
 
-			return new OneLine(`${theme.fg("toolTitle", theme.bold("edit"))} ${pathDisplay}`);
+			return new Text(`${theme.fg("toolTitle", theme.bold("edit"))} ${pathDisplay}`, 0, 0);
 		},
 
 		renderResult(result, { expanded }, theme, _context) {
@@ -279,7 +275,7 @@ export default function (pi: ExtensionAPI) {
 				text += theme.fg("toolOutput", ` (limit ${limit})`);
 			}
 
-			return new OneLine(text);
+			return new Text(text, 0, 0);
 		},
 
 		renderResult(result, { expanded }, theme, _context) {
@@ -333,7 +329,7 @@ export default function (pi: ExtensionAPI) {
 				text += theme.fg("toolOutput", ` limit ${limit}`);
 			}
 
-			return new OneLine(text);
+			return new Text(text, 0, 0);
 		},
 
 		renderResult(result, { expanded }, theme, _context) {
@@ -381,7 +377,7 @@ export default function (pi: ExtensionAPI) {
 				text += theme.fg("toolOutput", ` (limit ${limit})`);
 			}
 
-			return new OneLine(text);
+			return new Text(text, 0, 0);
 		},
 
 		renderResult(result, { expanded }, theme, _context) {
