@@ -7,7 +7,7 @@ bug-fix: inherit-parent
 perf-issue: inherit-parent
 hillclimb: inherit-parent
 judgment and prose: inherit-parent
-strongest judgment: opus
+strongest judgment: opus @xhigh
 how explorer: inherit-parent
 how explainer: inherit-parent
 why investigators: inherit-parent
@@ -15,7 +15,7 @@ why synthesizer: inherit-parent
 reflect tooling: inherit-parent
 reflect judgment, divergent, synthesizer: inherit-parent
 arena runners: google/gemini-4-argon @medium, opus, cliproxyapi/gpt-6.1-sol @high, fable
-arena cross-judge pool: fable, cliproxyapi/gpt-6.1-sol @high, google/gemini-4-argon @medium
+arena cross-judge pool: fable, opus @xhigh
 swarm workers: inherit-parent
 architect runners: google/gemini-4-argon @medium, opus, cliproxyapi/gpt-6.1-sol @high, fable
 interrogate reviewers: google/gemini-4-argon @medium, opus, cliproxyapi/gpt-6.1-sol @high, fable
