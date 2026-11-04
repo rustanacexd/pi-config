@@ -19,8 +19,8 @@
     "cliproxyapi/claude-opus-5-5",
     "cliproxyapi/claude-sonnet-5-5",
     "cliproxyapi/claude-fable-5-1",
-    "openai/gpt-6.1-sol",
-    "openai/gpt-6-astra",
+    "cliproxyapi/gpt-6.1-sol",
+    "cliproxyapi/gpt-6-astra",
     "google/gemini-4-argon"
   ],
   "defaultThinkingLevel": "high",
@@ -83,5 +83,6 @@
   },
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.46.0"
-  }
+  },
+  "hideThinkingBlock": false
 }

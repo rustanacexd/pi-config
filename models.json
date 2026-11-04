@@ -8,6 +8,13 @@
         }
       }
     },
+    "cliproxyapi": {
+      "modelOverrides": {
+        "gpt-6.1-sol": {
+          "contextWindow": 500000
+        }
+      }
+    },
     "google": {
       "modelOverrides": {
         "gemini-4-argon": {
