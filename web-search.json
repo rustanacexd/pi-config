@@ -1,5 +1,6 @@
 {
   "exaApiKey": "${EXA_API_KEY}",
   "workflow": "none",
-  "autoOpenBrowser": false
+  "autoOpenBrowser": false,
+  "youtube": { "preferredModel": "gemini-4-argon" }
 }
