@@ -14,48 +14,65 @@
     "git:github.com/michael-denyer/pstack-claude",
     {
       "source": "git:github.com/vercel-labs/agent-browser",
-      "skills": ["agent-browser"],
+      "skills": [
+        "agent-browser"
+      ],
       "extensions": [],
       "prompts": [],
       "themes": []
     },
     {
       "source": "git:github.com/vercel-labs/agent-desktop",
-      "skills": ["agent-desktop"],
+      "skills": [
+        "agent-desktop"
+      ],
       "extensions": [],
       "prompts": [],
       "themes": []
     },
     {
       "source": "git:github.com/backnotprop/bro",
-      "skills": ["clean-room", "ladder", "status"],
+      "skills": [
+        "clean-room",
+        "ladder",
+        "status"
+      ],
       "extensions": [],
       "prompts": [],
       "themes": []
     },
     {
       "source": "git:github.com/google/skills",
-      "skills": ["gcloud", "finding-google-skills"],
+      "skills": [
+        "gcloud",
+        "finding-google-skills"
+      ],
       "extensions": [],
       "prompts": [],
       "themes": []
     },
     {
       "source": "git:github.com/github/gh-stack",
-      "skills": ["gh-stack"],
+      "skills": [
+        "gh-stack"
+      ],
       "extensions": [],
       "prompts": [],
       "themes": []
     },
     {
       "source": "git:github.com/cli/cli",
-      "skills": ["gh"],
+      "skills": [
+        "gh"
+      ],
       "extensions": [],
       "prompts": [],
       "themes": []
     }
   ],
-  "skills": ["!~/.agents/skills/**"],
+  "skills": [
+    "!~/.agents/skills/**"
+  ],
   "defaultProvider": "anthropic",
   "defaultModel": "claude-opus-5-5",
   "enabledModels": [
@@ -67,7 +84,7 @@
     "google/gemini-4-argon"
   ],
   "defaultThinkingLevel": "high",
-  "quietStartup": true,
+  "quietStartup": false,
   "collapseChangelog": true,
   "modelThinkingLevels": {
     "anthropic/claude-fable-5-1": "high",
