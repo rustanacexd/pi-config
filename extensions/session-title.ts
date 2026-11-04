@@ -32,6 +32,9 @@ export default function (pi: ExtensionAPI) {
       { messages: [{ role: "user", content: [{ type: "text", text }], timestamp: Date.now() }] },
       { maxTokens: 40, cacheRetention: "none" },
     )
+    if (response.stopReason === "error" || response.stopReason === "aborted") {
+      throw new Error(response.errorMessage ?? response.stopReason)
+    }
     const reply = response.content.flatMap((part) => (part.type === "text" ? [part.text] : [])).join("")
     const title = cleanTitle(reply)
     // The user may have run /name while the model was answering.
@@ -44,7 +47,10 @@ export default function (pi: ExtensionAPI) {
     naming = true
     // Not awaited: the turn starts at once, and the tab title changes when the name arrives.
     nameSession(event.text, ctx)
-      .catch(() => undefined)
+      .catch((error: unknown) => {
+        const message = error instanceof Error ? error.message : String(error)
+        if (ctx.hasUI) ctx.ui.notify(`Session title failed: ${message}`, "warning")
+      })
       .finally(() => {
         naming = false
       })
