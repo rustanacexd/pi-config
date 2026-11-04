@@ -34,6 +34,14 @@ import { homedir } from "os";
 const BUILT_IN_TOOLS = new Set(["read", "bash", "edit", "write", "find", "grep", "ls"]);
 const SUMMARY_KEYS = ["description", "command", "query", "queries", "claim", "url", "urls", "path", "prompt", "message", "to", "id", "code"];
 
+const KEEP_FRACTION = 0.25;
+const MIN_KEEP_CHARS = 20;
+
+function quarter(text: string): string {
+	const keep = Math.max(MIN_KEEP_CHARS, Math.ceil(text.length * KEEP_FRACTION));
+	return text.length > keep ? `${text.slice(0, keep).trimEnd()}…` : text;
+}
+
 class OneLine implements Component {
 	constructor(private readonly text: string) {}
 	render(width: number): string[] {
@@ -87,7 +95,7 @@ export default function (pi: ExtensionAPI) {
 				if (context.expanded && base?.renderCall) {
 					return base.renderCall(args, theme, { ...context, lastComponent: undefined });
 				}
-				return new OneLine(`${theme.fg("toolTitle", theme.bold(toolName))} ${theme.fg("muted", summarizeArgs(args))}`);
+				return new OneLine(`${theme.fg("toolTitle", theme.bold(toolName))} ${theme.fg("muted", quarter(summarizeArgs(args)))}`);
 			},
 			renderResult(result, options, theme, context) {
 				if (!options.expanded) return new Text("", 0, 0);
@@ -155,7 +163,7 @@ export default function (pi: ExtensionAPI) {
 			if (_context.expanded) {
 				return new Text(theme.fg("toolTitle", theme.bold(`$ ${lines.join("\n")}`)) + timeoutSuffix, 0, 0);
 			}
-			return new OneLine(theme.fg("toolTitle", theme.bold(`$ ${lines[0]}`)) + more + timeoutSuffix);
+			return new OneLine(theme.fg("toolTitle", theme.bold(`$ ${quarter(lines[0])}`)) + more + timeoutSuffix);
 		},
 
 		renderResult(result, { expanded }, theme, _context) {
