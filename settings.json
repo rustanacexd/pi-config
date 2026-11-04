@@ -11,8 +11,51 @@
     "npm:@router-for-me/pi-cliproxyapi-provider",
     "npm:pi-btw",
     "npm:pi-web-access",
-    "git:github.com/michael-denyer/pstack-claude"
+    "git:github.com/michael-denyer/pstack-claude",
+    {
+      "source": "git:github.com/vercel-labs/agent-browser",
+      "skills": ["agent-browser"],
+      "extensions": [],
+      "prompts": [],
+      "themes": []
+    },
+    {
+      "source": "git:github.com/vercel-labs/agent-desktop",
+      "skills": ["agent-desktop"],
+      "extensions": [],
+      "prompts": [],
+      "themes": []
+    },
+    {
+      "source": "git:github.com/backnotprop/bro",
+      "skills": ["clean-room", "ladder", "status"],
+      "extensions": [],
+      "prompts": [],
+      "themes": []
+    },
+    {
+      "source": "git:github.com/google/skills",
+      "skills": ["gcloud", "finding-google-skills"],
+      "extensions": [],
+      "prompts": [],
+      "themes": []
+    },
+    {
+      "source": "git:github.com/github/gh-stack",
+      "skills": ["gh-stack"],
+      "extensions": [],
+      "prompts": [],
+      "themes": []
+    },
+    {
+      "source": "git:github.com/cli/cli",
+      "skills": ["gh"],
+      "extensions": [],
+      "prompts": [],
+      "themes": []
+    }
   ],
+  "skills": ["!~/.agents/skills/**"],
   "defaultProvider": "anthropic",
   "defaultModel": "claude-opus-5-5",
   "enabledModels": [

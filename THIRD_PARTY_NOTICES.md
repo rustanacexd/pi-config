@@ -1,18 +1,17 @@
-# Standalone skill sources
+# Third-party skill sources
 
-These skills are snapshots of the installed copies. Keep their attribution and supporting files when updating them.
+## Local copies in `skills/`
 
-| Directories under `skills/` | Source |
-| --- | --- |
-| `find-skills` | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
-| `finding-google-skills`, `gcloud` | [google/skills](https://github.com/google/skills) |
-| `gh` | [cli/cli](https://github.com/cli/cli) |
-| `gh-stack` | [github/gh-stack](https://github.com/github/gh-stack) |
-| `plannotator`, `plannotator-annotate`, `plannotator-inbox`, `plannotator-last`, `plannotator-review` | [Plannotator core skills](https://github.com/backnotprop/plannotator/tree/main/apps/skills/core) |
-| `clean-room`, `ladder`, `status` | [backnotprop/bro](https://github.com/backnotprop/bro) |
-| `computer-use`, `orca-cli`, `orchestration` | Guides installed by the local Orca CLI. |
-| `show-me` | [rustanacexd/claude-config](https://github.com/rustanacexd/claude-config), `skills/show-me` |
+| Directory | Source | Local changes |
+| --- | --- | --- |
+| `rex` | Written by `rex skill setup`. Loads its guide from the installed Rex CLI. | None |
+| `computer-use`, `orca-cli`, `orchestration` | Installed by the Orca CLI. Load their guides from the installed Orca CLI. | None |
+| `show-me` | [rustanacexd/claude-config](https://github.com/rustanacexd/claude-config), `skills/show-me` | Uses the platform's browser or file opener instead of assuming macOS. |
+| `big-pics-little-words` | [backnotprop/bro](https://github.com/backnotprop/bro) | Adds "but dont use weird metaphors." |
+| `worktrunk` | [max-sixty/worktrunk](https://github.com/max-sixty/worktrunk), `skills/worktrunk` | Pi-specific guidance for commit generation and subagent worktrees. |
 
-Package-managed skills from pstack and effective-html are not vendored here. Their source revisions are pinned in `settings.json`.
+Keep attribution and supporting files when updating these copies.
 
-The `show-me` snapshot uses the platform's browser or file opener instead of assuming macOS. The other skill files are unchanged from the installed copies.
+## Package skills
+
+All other skills come from unpinned packages in `settings.json` and update with `pi update --extensions`. The effective-html package's `big-pics-little-words` is excluded so the local copy loads.
