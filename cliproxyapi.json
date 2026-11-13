@@ -1,6 +1,6 @@
 {
+  "apiKey": "123456",
   "baseUrl": "http://127.0.0.1:8317",
-  "apiKey": "local-proxy",
-  "fast": false,
+  "fast": true,
   "pause": false
 }
