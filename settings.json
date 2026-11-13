@@ -1,148 +1,145 @@
 {
+  "collapseChangelog": true,
+  "compaction": {
+    "modelOverrides": {
+      "anthropic/claude-fable-5": {
+        "reserveTokens": 680000
+      },
+      "anthropic/claude-fable-5-1": {
+        "reserveTokens": 500000
+      },
+      "anthropic/claude-haiku-5-5": {
+        "reserveTokens": 680000
+      },
+      "anthropic/claude-opus-5": {
+        "reserveTokens": 680000
+      },
+      "anthropic/claude-opus-5-5": {
+        "reserveTokens": 500000
+      },
+      "anthropic/claude-sonnet-5": {
+        "reserveTokens": 680000
+      },
+      "anthropic/claude-sonnet-5-5": {
+        "reserveTokens": 500000
+      },
+      "cliproxyapi/claude-fable-5": {
+        "reserveTokens": 680000
+      },
+      "cliproxyapi/claude-fable-5-1": {
+        "reserveTokens": 500000
+      },
+      "cliproxyapi/claude-haiku-5-5": {
+        "reserveTokens": 680000
+      },
+      "cliproxyapi/claude-opus-5": {
+        "reserveTokens": 680000
+      },
+      "cliproxyapi/claude-opus-5-5": {
+        "reserveTokens": 500000
+      },
+      "cliproxyapi/claude-sonnet-5": {
+        "reserveTokens": 680000
+      },
+      "cliproxyapi/claude-sonnet-5-5": {
+        "reserveTokens": 500000
+      }
+    }
+  },
+  "defaultModel": "claude-opus-5-5",
+  "defaultProvider": "cliproxyapi",
+  "defaultThinkingLevel": "high",
+  "enabledModels": [
+    "cliproxyapi/claude-opus-5-5",
+    "cliproxyapi/claude-fable-5-1",
+    "google/gemini-4-carbon"
+  ],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0"
+  },
+  "hideThinkingBlock": true,
+  "lastChangelogVersion": "1.5.2",
+  "modelThinkingLevels": {
+    "anthropic/claude-fable-5-1": "high",
+    "anthropic/claude-opus-5-5": "high"
+  },
   "packages": [
     "npm:@plannotator/pi-extension",
     "npm:@calesennett/pi-codex-fast",
     {
-      "source": "git:github.com/plannotator/effective-html",
       "skills": [
         "!big-pics-little-words"
-      ]
+      ],
+      "source": "git:github.com/plannotator/effective-html"
     },
     "npm:@router-for-me/pi-cliproxyapi-provider",
     "npm:pi-btw",
     "npm:pi-web-access",
     "git:github.com/michael-denyer/pstack-claude",
     {
-      "source": "git:github.com/vercel-labs/agent-browser",
+      "extensions": [],
+      "prompts": [],
       "skills": [
         "agent-browser"
       ],
-      "extensions": [],
-      "prompts": [],
+      "source": "npm:agent-browser",
       "themes": []
     },
     {
-      "source": "git:github.com/vercel-labs/agent-desktop",
+      "extensions": [],
+      "prompts": [],
       "skills": [
         "agent-desktop"
       ],
-      "extensions": [],
-      "prompts": [],
+      "source": "git:github.com/vercel-labs/agent-desktop",
       "themes": []
     },
     {
-      "source": "git:github.com/backnotprop/bro",
+      "extensions": [],
+      "prompts": [],
       "skills": [
         "clean-room",
         "ladder",
         "status"
       ],
-      "extensions": [],
-      "prompts": [],
+      "source": "git:github.com/backnotprop/bro",
       "themes": []
     },
     {
-      "source": "git:github.com/google/skills",
+      "extensions": [],
+      "prompts": [],
       "skills": [
         "gcloud",
         "finding-google-skills"
       ],
-      "extensions": [],
-      "prompts": [],
+      "source": "git:github.com/google/skills",
       "themes": []
     },
     {
-      "source": "git:github.com/github/gh-stack",
+      "extensions": [],
+      "prompts": [],
       "skills": [
         "gh-stack"
       ],
-      "extensions": [],
-      "prompts": [],
+      "source": "git:github.com/github/gh-stack",
       "themes": []
     },
     {
-      "source": "git:github.com/cli/cli",
+      "extensions": [],
+      "prompts": [],
       "skills": [
         "gh"
       ],
-      "extensions": [],
-      "prompts": [],
+      "source": "git:github.com/cli/cli",
       "themes": []
     }
   ],
-  "skills": [
-    "!~/.agents/skills/**"
-  ],
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-5-5",
-  "enabledModels": [
-    "cliproxyapi/claude-opus-5-5",
-    "cliproxyapi/claude-sonnet-5-5",
-    "cliproxyapi/claude-fable-5-1",
-    "cliproxyapi/gpt-6.1-sol",
-    "cliproxyapi/gpt-6-astra",
-    "google/gemini-4-argon"
-  ],
-  "defaultThinkingLevel": "high",
-  "quietStartup": false,
-  "collapseChangelog": true,
-  "modelThinkingLevels": {
-    "anthropic/claude-fable-5-1": "high",
-    "anthropic/claude-opus-5-5": "high"
-  },
-  "lastChangelogVersion": "1.5.0",
-  "compaction": {
-    "modelOverrides": {
-      "anthropic/claude-fable-5-1": {
-        "reserveTokens": 500000
-      },
-      "anthropic/claude-fable-5": {
-        "reserveTokens": 680000
-      },
-      "anthropic/claude-opus-5-5": {
-        "reserveTokens": 500000
-      },
-      "anthropic/claude-opus-5": {
-        "reserveTokens": 680000
-      },
-      "anthropic/claude-sonnet-5-5": {
-        "reserveTokens": 500000
-      },
-      "anthropic/claude-sonnet-5": {
-        "reserveTokens": 680000
-      },
-      "anthropic/claude-haiku-5-5": {
-        "reserveTokens": 680000
-      },
-      "cliproxyapi/claude-fable-5-1": {
-        "reserveTokens": 500000
-      },
-      "cliproxyapi/claude-fable-5": {
-        "reserveTokens": 680000
-      },
-      "cliproxyapi/claude-opus-5-5": {
-        "reserveTokens": 500000
-      },
-      "cliproxyapi/claude-opus-5": {
-        "reserveTokens": 680000
-      },
-      "cliproxyapi/claude-sonnet-5-5": {
-        "reserveTokens": 500000
-      },
-      "cliproxyapi/claude-sonnet-5": {
-        "reserveTokens": 680000
-      },
-      "cliproxyapi/claude-haiku-5-5": {
-        "reserveTokens": 680000
-      }
-    }
-  },
   "pi-codex-fast": {
     "enabled": true,
     "mode": "ultrafast"
   },
-  "extensionChangelogVersions": {
-    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.46.0"
-  },
-  "hideThinkingBlock": true
+  "quietStartup": false,
+  "skills": [
+    "!~/.agents/skills/**"
+  ]
 }
