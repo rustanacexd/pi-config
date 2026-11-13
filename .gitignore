@@ -2,6 +2,7 @@
 /auth.json
 /mcp-auth.json
 /trust.json
+/mcp-project-approvals.json
 .env
 .env.*
 *.pem
@@ -17,6 +18,10 @@
 /tmp/
 /run-history.jsonl
 /mcp-cache.json
+/mcp-npx-cache.json
+/mcp-last-seen-version.json
+/mcp-onboarding.json
+/install/staging/
 /models-store.json
 /cliproxyapi-models.json
 /web-search-cache/

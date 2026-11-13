@@ -1,7 +1,0 @@
-{
-  "version": 1,
-  "sharedConfigHintShown": true,
-  "setupCompleted": false,
-  "piBuiltinMcpHandledVersion": "7.0.1",
-  "lastDiscoveryFingerprint": "{\"sources\":[[\"shared-global\",true,1],[\"agents-global\",false,0],[\"agents-nested-global\",false,0],[\"pi-mcp-global\",false,0],[\"pi-global\",false,0],[\"shared-project\",false,0],[\"pi-mcp-project\",false,0],[\"pi-project\",false,0]]}"
-}

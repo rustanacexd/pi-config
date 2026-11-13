@@ -58,7 +58,7 @@
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0",
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1"
   },
-  "hideThinkingBlock": true,
+  "hideThinkingBlock": false,
   "lastChangelogVersion": "1.5.2",
   "modelThinkingLevels": {
     "anthropic/claude-fable-5-1": "high",
@@ -72,7 +72,12 @@
       ],
       "source": "git:github.com/plannotator/effective-html"
     },
-    "npm:@router-for-me/pi-cliproxyapi-provider",
+    {
+      "source": "npm:@router-for-me/pi-cliproxyapi-provider",
+      "extensions": [
+        "-extensions/tps.ts"
+      ]
+    },
     "npm:pi-btw",
     "npm:pi-web-access",
     "git:github.com/michael-denyer/pstack-claude",
