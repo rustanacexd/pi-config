@@ -65,7 +65,6 @@
   },
   "packages": [
     "npm:@plannotator/pi-extension",
-    "npm:@calesennett/pi-codex-fast",
     {
       "skills": [
         "!big-pics-little-words"
@@ -134,10 +133,6 @@
       "themes": []
     }
   ],
-  "pi-codex-fast": {
-    "enabled": true,
-    "mode": "ultrafast"
-  },
   "quietStartup": false,
   "skills": [
     "!~/.agents/skills/**"
