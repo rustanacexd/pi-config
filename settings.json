@@ -22,7 +22,7 @@
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
     "{\"source\":\"git:github.com/nicobailon/visual-explainer\",\"scope\":\"user\"}": "0.15.0"
   },
-  "hideThinkingBlock": true,
+  "hideThinkingBlock": false,
   "lastChangelogVersion": "1.5.2",
   "packages": [
     "npm:@plannotator/pi-extension",
