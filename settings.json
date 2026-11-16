@@ -23,7 +23,7 @@
     "{\"source\":\"git:github.com/nicobailon/visual-explainer\",\"scope\":\"user\"}": "0.15.0",
     "{\"source\":\"npm:pi-compact-tools\",\"scope\":\"user\"}": "0.18.0"
   },
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "lastChangelogVersion": "1.5.2",
   "packages": [
     "npm:@plannotator/pi-extension",
