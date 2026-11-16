@@ -13,4 +13,4 @@ Keep attribution and supporting files when updating these copies.
 
 ## Package skills
 
-All other skills come from unpinned packages in `settings.json` and update with `pi update --extensions`. The effective-html package's `big-pics-little-words` is excluded so the local copy loads.
+All other skills come from unpinned packages in `settings.json` and update with `pi update --extensions`. The `backnotprop/bro` package's `skills` filter leaves out `big-pics-little-words`, so the local copy loads.
