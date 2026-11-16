@@ -2,46 +2,13 @@
   "collapseChangelog": true,
   "compaction": {
     "modelOverrides": {
-      "anthropic/claude-fable-5": {
-        "reserveTokens": 680000
-      },
-      "anthropic/claude-fable-5-1": {
-        "reserveTokens": 500000
-      },
-      "anthropic/claude-haiku-5-5": {
-        "reserveTokens": 680000
-      },
-      "anthropic/claude-opus-5": {
-        "reserveTokens": 680000
-      },
-      "anthropic/claude-opus-5-5": {
-        "reserveTokens": 500000
-      },
-      "anthropic/claude-sonnet-5": {
-        "reserveTokens": 680000
-      },
-      "anthropic/claude-sonnet-5-5": {
-        "reserveTokens": 500000
-      },
-      "cliproxyapi/claude-fable-5": {
-        "reserveTokens": 680000
-      },
-      "cliproxyapi/claude-fable-5-1": {
-        "reserveTokens": 500000
-      },
-      "cliproxyapi/claude-haiku-5-5": {
-        "reserveTokens": 680000
-      },
-      "cliproxyapi/claude-opus-5": {
-        "reserveTokens": 680000
-      },
       "cliproxyapi/claude-opus-5-5": {
         "reserveTokens": 500000
       },
-      "cliproxyapi/claude-sonnet-5": {
-        "reserveTokens": 680000
+      "cliproxyapi/claude-fable-5-2": {
+        "reserveTokens": 500000
       },
-      "cliproxyapi/claude-sonnet-5-5": {
+      "google/gemini-4-carbon": {
         "reserveTokens": 500000
       }
     }
@@ -61,10 +28,6 @@
   },
   "hideThinkingBlock": false,
   "lastChangelogVersion": "1.5.2",
-  "modelThinkingLevels": {
-    "anthropic/claude-fable-5-1": "high",
-    "anthropic/claude-opus-5-5": "high"
-  },
   "packages": [
     "npm:@plannotator/pi-extension",
     {
