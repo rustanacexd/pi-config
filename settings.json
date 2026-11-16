@@ -107,5 +107,8 @@
   ],
   "extensions": [
     "-builtin:mcp"
-  ]
+  ],
+  "tidy": {
+    "userMessageStyle": "off"
+  }
 }
