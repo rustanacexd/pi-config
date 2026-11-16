@@ -14,6 +14,9 @@
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 export default function worktrunkActivity(pi: ExtensionAPI): void {
+  // pstack sets this in every subagent. A subagent works on the parent's branch, so its markers overwrite
+  // the parent's, and its exit clears 🤖 while the parent still works.
+  if (process.env.PI_SUBAGENT_PARENT_SESSION) return;
   const run = async (
     cwd: string,
     args: ["set", string] | ["clear"],

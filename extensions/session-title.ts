@@ -14,12 +14,18 @@ const INSTRUCTIONS = [
 ].join(" ")
 
 function cleanTitle(text: string): string | undefined {
-  const title = text.trim().split("\n")[0].replace(/^["'`*#\s]+|["'`*.\s]+$/g, "")
+  const lines = text.trim().split("\n")
+  const title = lines[0].replace(/^["'`*#\s]+|["'`*.\s]+$/g, "")
+  // Haiku sometimes thinks aloud instead ("Is the message asking for work? It asks…"). That is no
+  // title, and leaving the session unnamed lets the next prompt try again.
+  if (lines.length > 1 || title.length > MAX_TITLE_CHARS) return undefined
   if (!title || title.toUpperCase() === "NONE") return undefined
-  return title.length > MAX_TITLE_CHARS ? `${title.slice(0, MAX_TITLE_CHARS - 1).trimEnd()}…` : title
+  return title
 }
 
 export default function (pi: ExtensionAPI) {
+  // pstack sets this in every subagent, whose session name nothing shows, so titling it wastes a model call.
+  if (process.env.PI_SUBAGENT_PARENT_SESSION) return
   let naming = false
 
   async function nameSession(prompt: string, ctx: ExtensionContext): Promise<void> {

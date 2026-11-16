@@ -32,6 +32,9 @@ function rexCandidates(): string[] {
 }
 
 export default function (pi: ExtensionAPI) {
+  // pstack sets this in every subagent. A subagent inherits the parent's REX_* variables, so with this
+  // block it renames the parent's Rex session after its own subtask.
+  if (process.env.PI_SUBAGENT_PARENT_SESSION) return
   let context: Promise<string | undefined> = Promise.resolve(undefined)
 
   // Never start a Rex server just because pi started.
