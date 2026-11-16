@@ -109,6 +109,7 @@
     "-builtin:mcp"
   ],
   "tidy": {
-    "userMessageStyle": "off"
+    "userMessageStyle": "off",
+    "finalReplyStyle": "off"
   }
 }
