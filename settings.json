@@ -51,12 +51,13 @@
   "defaultThinkingLevel": "high",
   "enabledModels": [
     "cliproxyapi/claude-opus-5-5",
-    "cliproxyapi/claude-fable-5-1",
+    "cliproxyapi/claude-fable-5-2",
     "google/gemini-4-carbon"
   ],
   "extensionChangelogVersions": {
-    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0",
-    "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1"
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
+    "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
+    "{\"source\":\"git:github.com/nicobailon/visual-explainer\",\"scope\":\"user\"}": "0.15.0"
   },
   "hideThinkingBlock": false,
   "lastChangelogVersion": "1.5.2",
@@ -66,12 +67,6 @@
   },
   "packages": [
     "npm:@plannotator/pi-extension",
-    {
-      "skills": [
-        "!big-pics-little-words"
-      ],
-      "source": "git:github.com/plannotator/effective-html"
-    },
     {
       "source": "npm:@router-for-me/pi-cliproxyapi-provider",
       "extensions": [
@@ -138,7 +133,8 @@
       "source": "git:github.com/cli/cli",
       "themes": []
     },
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "git:github.com/nicobailon/visual-explainer"
   ],
   "quietStartup": false,
   "skills": [
