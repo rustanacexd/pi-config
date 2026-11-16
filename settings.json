@@ -95,7 +95,11 @@
     },
     "npm:pi-mcp-adapter",
     "git:github.com/nicobailon/visual-explainer",
-    "npm:pi-compact-tools"
+    {
+      "source": "npm:pi-compact-tools",
+      "extensions": []
+    },
+    "npm:pi-tidy"
   ],
   "quietStartup": false,
   "skills": [
