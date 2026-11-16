@@ -7,9 +7,6 @@
       },
       "cliproxyapi/claude-fable-5-2": {
         "reserveTokens": 500000
-      },
-      "google/gemini-4-carbon": {
-        "reserveTokens": 500000
       }
     }
   },
@@ -18,15 +15,14 @@
   "defaultThinkingLevel": "high",
   "enabledModels": [
     "cliproxyapi/claude-opus-5-5",
-    "cliproxyapi/claude-fable-5-2",
-    "google/gemini-4-carbon"
+    "cliproxyapi/claude-fable-5-2"
   ],
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
     "{\"source\":\"git:github.com/nicobailon/visual-explainer\",\"scope\":\"user\"}": "0.15.0"
   },
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "lastChangelogVersion": "1.5.2",
   "packages": [
     "npm:@plannotator/pi-extension",

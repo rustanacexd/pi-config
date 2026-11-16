@@ -14,11 +14,11 @@ why investigators: opus
 why synthesizer: opus
 reflect tooling: opus @high
 reflect judgment, divergent, synthesizer: opus @xhigh
-arena runners: opus @high, fable @high, google/gemini-4-carbon @high
-arena cross-judge pool: opus @high, fable @high, google/gemini-4-carbon @high
+arena runners: opus @high, fable @high
+arena cross-judge pool: opus @high, fable @high
 swarm workers: opus @high
-architect runners: opus @high, fable @high, google/gemini-4-carbon @high
-interrogate reviewers: opus @high, fable @high, google/gemini-4-carbon @high
+architect runners: opus @high, fable @high
+interrogate reviewers: opus @high, fable @high
 thermos reviewers: opus
 no-comments reviewer: opus
 
