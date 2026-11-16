@@ -1,3 +1,4 @@
 {
-  "style": "claude"
+  "style": "claude",
+  "mode": "silent"
 }
