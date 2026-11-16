@@ -109,7 +109,7 @@
     "-builtin:mcp"
   ],
   "tidy": {
-    "userMessageStyle": "rail",
+    "userMessageStyle": "off",
     "userMessagePaddingY": 2,
     "finalReplyStyle": "off"
   }
