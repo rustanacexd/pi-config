@@ -21,7 +21,6 @@
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
-    "{\"source\":\"git:github.com/nicobailon/visual-explainer\",\"scope\":\"user\"}": "0.15.0",
     "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.9.8",
     "{\"source\":\"npm:pi-rewind-hook\",\"scope\":\"user\"}": "1.8.9"
   },
