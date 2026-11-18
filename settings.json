@@ -115,7 +115,8 @@
   ],
   "quietStartup": true,
   "skills": [
-    "!~/.agents/skills/**"
+    "!~/.agents/skills/**",
+    "+~/.agents/skills/rex/SKILL.md"
   ],
   "extensions": [
     "-builtin:mcp"
