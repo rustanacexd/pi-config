@@ -10,7 +10,7 @@ import type { ExtensionAPI } from "@earendil-works/pi-coding-agent"
 // installs for pi, so the stub is the switch. Without the flag, Rex's default (naming on) applies.
 function sessionNamingArgs(): string[] {
   try {
-    const stub = readFileSync(join(homedir(), ".pi/agent/skills/rex/SKILL.md"), "utf8")
+    const stub = readFileSync(join(homedir(), ".agents/skills/rex/SKILL.md"), "utf8")
     return stub.includes("--feature-session-naming=false") ? ["--feature-session-naming=false"] : []
   } catch {
     return []
