@@ -39,68 +39,48 @@
     "npm:pi-web-access",
     "git:github.com/michael-denyer/pstack-claude",
     {
-      "extensions": [],
-      "prompts": [],
       "skills": [
         "agent-browser"
       ],
-      "source": "npm:agent-browser",
-      "themes": []
+      "source": "npm:agent-browser"
     },
     {
-      "extensions": [],
-      "prompts": [],
       "skills": [
         "agent-desktop"
       ],
-      "source": "git:github.com/vercel-labs/agent-desktop",
-      "themes": []
+      "source": "git:github.com/vercel-labs/agent-desktop"
     },
     {
-      "extensions": [],
-      "prompts": [],
       "skills": [
         "clean-room",
         "ladder",
         "status"
       ],
-      "source": "git:github.com/backnotprop/bro",
-      "themes": []
+      "source": "git:github.com/backnotprop/bro"
     },
     {
-      "extensions": [],
-      "prompts": [],
       "skills": [
         "gcloud",
         "finding-google-skills"
       ],
-      "source": "git:github.com/google/skills",
-      "themes": []
+      "source": "git:github.com/google/skills"
     },
     {
-      "extensions": [],
-      "prompts": [],
       "skills": [
         "gh-stack"
       ],
-      "source": "git:github.com/github/gh-stack",
-      "themes": []
+      "source": "git:github.com/github/gh-stack"
     },
     {
-      "extensions": [],
-      "prompts": [],
       "skills": [
         "gh"
       ],
-      "source": "git:github.com/cli/cli",
-      "themes": []
+      "source": "git:github.com/cli/cli"
     },
     "npm:pi-mcp-adapter",
     "npm:pi-tidy",
     "npm:pi-rewind-hook",
     {
-      "extensions": [],
-      "prompts": [],
       "skills": [
         "design-artifact",
         "html",
@@ -110,8 +90,7 @@
         "html-wireframe",
         "one-pager"
       ],
-      "source": "git:github.com/plannotator/effective-html",
-      "themes": []
+      "source": "git:github.com/plannotator/effective-html"
     }
   ],
   "skills": [
