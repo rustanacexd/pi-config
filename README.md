@@ -39,7 +39,7 @@ Every model call goes through [CLIProxyAPI](https://github.com/router-for-me/CLI
 | `pi-mcp-adapter` | MCP client. It reads `mcp-adapter.json`. Pi's built-in MCP is turned off with `-builtin:mcp`. |
 | `@plannotator/pi-extension` | Plan mode and browser review of plans, files, and diffs. |
 | `pi-btw` | `/btw` side conversations while the main agent works. |
-| `nicobailon/visual-explainer` | The `visual_explainer` tool and skill for HTML diagrams and recaps. |
+| `pi-rewind-hook` | Automatic git checkpoints, with file and conversation restore. |
 | `pi-tidy` | Folds each reply's tool calls into one line. User message and final reply frames are off. |
 
 These packages provide skills only. Their extensions, prompts, and themes are turned off.
@@ -52,6 +52,7 @@ These packages provide skills only. Their extensions, prompts, and themes are tu
 | `google/skills` | `gcloud`, `finding-google-skills` |
 | `github/gh-stack` | `gh-stack` |
 | `cli/cli` | `gh` |
+| `plannotator/effective-html` | `design-artifact`, `html`, `html-diagram`, `html-plan`, `html-prototype`, `html-wireframe`, `one-pager` |
 
 ## Local extensions
 
@@ -116,4 +117,4 @@ Skills do not install the tools they describe. Install and sign in to the ones y
 | `agent-browser`, `agent-desktop` | The matching automation CLI. |
 | `gh`, `gh-stack` | GitHub CLI. `gh-stack` also needs Git 2.36 or newer and the `github/gh-stack` extension. |
 | `gcloud` | Google Cloud CLI. |
-| Plannotator, visual-explainer | A browser. |
+| Plannotator, effective-html | A browser. |

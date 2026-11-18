@@ -96,7 +96,22 @@
     },
     "npm:pi-mcp-adapter",
     "npm:pi-tidy",
-    "npm:pi-rewind-hook"
+    "npm:pi-rewind-hook",
+    {
+      "extensions": [],
+      "prompts": [],
+      "skills": [
+        "design-artifact",
+        "html",
+        "html-diagram",
+        "html-plan",
+        "html-prototype",
+        "html-wireframe",
+        "one-pager"
+      ],
+      "source": "git:github.com/plannotator/effective-html",
+      "themes": []
+    }
   ],
   "quietStartup": true,
   "skills": [
