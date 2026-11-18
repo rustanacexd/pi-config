@@ -1,12 +1,13 @@
 {
   "collapseChangelog": true,
+  "showCacheMissNotices": true,
   "compaction": {
     "modelOverrides": {
       "cliproxyapi/claude-opus-5-5": {
-        "reserveTokens": 500000
+        "reserveTokens": 600000
       },
       "cliproxyapi/claude-fable-5-2": {
-        "reserveTokens": 500000
+        "reserveTokens": 600000
       }
     }
   },
@@ -113,7 +114,6 @@
       "themes": []
     }
   ],
-  "quietStartup": true,
   "skills": [
     "!~/.agents/skills/**",
     "+~/.agents/skills/rex/SKILL.md",
