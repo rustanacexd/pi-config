@@ -103,6 +103,17 @@
   "tidy": {
     "userMessageStyle": "off",
     "userMessagePaddingY": 2,
-    "finalReplyStyle": "off"
+    "finalReplyStyle": "off",
+    "messageBorderColors": { "assistant": "borderMuted" },
+    "toolColors": {
+      "bash": "bashMode",
+      "read": "toolTitle",
+      "edit": "borderMuted",
+      "write": "borderMuted",
+      "grep": "syntaxOperator",
+      "find": "syntaxOperator",
+      "ls": "syntaxOperator",
+      "mcp": "customMessageLabel"
+    }
   }
 }
