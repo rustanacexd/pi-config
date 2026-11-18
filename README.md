@@ -57,9 +57,8 @@ The other `packages` entries in `settings.json` provide skills only. Their `skil
 
 ## Local skills
 
-`skills/` holds only skills that have no upstream package to update from:
+`skills/` holds copies of skills that have local edits:
 
-- `rex` is a stub from `rex skill setup`. It loads its guide from the installed Rex CLI.
 - `show-me`, `big-pics-little-words`, and `worktrunk` are copies with local edits.
 
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) lists the source and edits of each copy.
@@ -96,7 +95,7 @@ The other `packages` entries in `settings.json` provide skills only. Their `skil
 - `scripts/skill-sync` also reports `drift` when a copy in `skills/` differs from its twin in `~/.agents/skills`, for example after `npx skills update`. Compare the two with the printed `diff` command and merge by hand.
 - To add a skill by hand, add a package to `settings.json` with a `skills` filter. Set `extensions`, `prompts`, and `themes` to `[]` for a skill-only package.
 - Copy a skill into `skills/` only when you edit it, and record the copy in `THIRD_PARTY_NOTICES.md`.
-- `settings.json` excludes `~/.agents/skills`, so only this setup loads globally. A project's `.agents/skills/` still loads. Keep project-specific skills there.
+- `settings.json` excludes `~/.agents/skills`, so only this setup loads globally. The exceptions are `rex` and `rexume`: `rex skill setup` and `rexume install` write and update their stubs there, and `settings.json` force-includes each one with a `+` path. A project's `.agents/skills/` still loads. Keep project-specific skills there.
 - Keep credentials in environment variables, `auth.json`, and `mcp-auth.json`. Never commit them.
 
 ## Optional tools
