@@ -15,7 +15,7 @@ Credentials, project trust, sessions, caches, and downloaded packages stay on th
 | [`web-search.json`](web-search.json) | pi-web-access settings. The Exa key comes from `EXA_API_KEY`. |
 | [`mcp-adapter.json`](mcp-adapter.json) | MCP servers for pi-mcp-adapter. Only Notion is configured. |
 | [`models.json`](models.json) | Custom providers. Empty. |
-| [`extensions/`](extensions) | Local extensions. See [Local extensions](#local-extensions). |
+| [`extensions/`](extensions) | Local extensions. |
 | [`skills/`](skills) | Local skills. See [Local skills](#local-skills). |
 | [`scripts/skill-sync`](scripts/skill-sync) | Adds skills installed with `npx skills` to `settings.json`. See [Maintain the setup](#maintain-the-setup). |
 | `install/` | Metadata for Pi's managed install, which is on 1.5.2. |
@@ -44,16 +44,6 @@ Every model call goes through [CLIProxyAPI](https://github.com/router-for-me/CLI
 | `pi-tidy` | Folds each reply's tool calls into one line. User message and final reply frames are off. |
 
 The other `packages` entries in `settings.json` provide skills only. Their `skills` filter lists the skills Pi loads, and their extensions, prompts, and themes are turned off.
-
-## Local extensions
-
-| File | What it does |
-| --- | --- |
-| `session-title.ts` | Names each session after its first task. The terminal tab shows the name. A name set with `/name` is kept. |
-| `message-spacing.ts` | Adds a blank line under each user message. |
-| `rex-session-start.ts` | Adds Rex's session-start instructions to the system prompt. Rex has no Pi hook, so this extension runs the same command. |
-| `rexume.ts` | Reports each session to rexume and delivers messages from its inbox. `rexume install` writes this file and the rexume daemon keeps it current. |
-| `worktrunk.ts` | Shows agent activity markers in `wt list`. `wt config plugins pi install` writes this file. |
 
 ## Local skills
 
@@ -97,17 +87,3 @@ The other `packages` entries in `settings.json` provide skills only. Their `skil
 - Copy a skill into `skills/` only when you edit it, and record the copy in `THIRD_PARTY_NOTICES.md`.
 - `settings.json` excludes `~/.agents/skills`, so only this setup loads globally. The exceptions are `rex` and `rexume`: `rex skill setup` and `rexume install` write and update their stubs there, and `settings.json` force-includes each one with a `+` path. A project's `.agents/skills/` still loads. Keep project-specific skills there.
 - Keep credentials in environment variables, `auth.json`, and `mcp-auth.json`. Never commit them.
-
-## Optional tools
-
-Skills do not install the tools they describe. Install and sign in to the ones you use.
-
-| Skills or extensions | Needs |
-| --- | --- |
-| `rex`, `rex-session-start.ts` | Rex and its CLI. |
-| `rexume.ts` | The `rexume` CLI and daemon. |
-| `worktrunk`, `worktrunk.ts` | Worktrunk's `wt` CLI. |
-| `agent-browser`, `agent-desktop` | The matching automation CLI. |
-| `gh`, `gh-stack` | GitHub CLI. `gh-stack` also needs Git 2.36 or newer and the `github/gh-stack` extension. |
-| `gcloud` | Google Cloud CLI. |
-| Plannotator, effective-html | A browser. |
