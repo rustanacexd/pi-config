@@ -21,7 +21,8 @@
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
     "{\"source\":\"git:github.com/nicobailon/visual-explainer\",\"scope\":\"user\"}": "0.15.0",
-    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.9.8"
+    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.9.8",
+    "{\"source\":\"npm:pi-rewind-hook\",\"scope\":\"user\"}": "1.8.9"
   },
   "hideThinkingBlock": true,
   "lastChangelogVersion": "1.5.2",
@@ -94,8 +95,8 @@
       "themes": []
     },
     "npm:pi-mcp-adapter",
-    "git:github.com/nicobailon/visual-explainer",
-    "npm:pi-tidy"
+    "npm:pi-tidy",
+    "npm:pi-rewind-hook"
   ],
   "quietStartup": true,
   "skills": [
