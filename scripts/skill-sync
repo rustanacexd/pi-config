@@ -1,0 +1,145 @@
+#!/bin/bash
+# Bring skills that `npx skills add` installed into ~/.agents/skills (which Pi ignores) into settings.json.
+#   scripts/skill-sync                  dry run: print what would change
+#   scripts/skill-sync --apply          write settings.json and clone what Pi is missing
+#   scripts/skill-sync --apply --prune  also drop filter names that `npx skills remove` removed here
+# Bash 3.2 and jq, both shipped with macOS. All decisions live in the jq program PLAN below.
+set -euo pipefail
+
+AGENT_DIR=$(cd "$(dirname "$0")/.." && pwd)
+export PI_CODING_AGENT_DIR="$AGENT_DIR"
+SETTINGS="$AGENT_DIR/settings.json"
+LOCK="$HOME/.agents/.skill-lock.json"
+AGENTS_SKILLS="$HOME/.agents/skills"
+
+apply=false prune=false
+for arg in "$@"; do
+  case $arg in
+    --apply) apply=true ;;
+    --prune) prune=true ;;
+    -h|--help) sed -n '2,5s/^# \{0,1\}//p' "$0"; exit 0 ;;
+    *) sed -n '2,5s/^# \{0,1\}//p' "$0" >&2; exit 1 ;;
+  esac
+done
+if $prune && ! $apply; then echo "--prune needs --apply" >&2; exit 1; fi
+
+# Pure: (lock, settings, local copies, ~/.agents/skills names, same-name hits, prune) -> plan.
+# Each lock skill gets one row, first match wins. Pi's skill filter matches the skill's directory name.
+# shellcheck disable=SC2016
+PLAN='
+def plain: test("^[A-Za-z0-9_.][A-Za-z0-9_.-]*$");
+def dir_of: split("/") | if length >= 2 then .[-2] else null end;
+def src: if type == "string" then . else .source end;
+def whole: type == "string" or (.skills | type != "array");
+def clone_dir: if startswith("git:") then "git/" + (.[4:] | sub("@.*$"; ""))
+  elif startswith("npm:") then "npm/node_modules/" + (.[4:] | sub("(?<=.)@.*$"; "")) else null end;
+
+($settings.packages // []) as $pkgs
+| [ $pkgs[] | objects | select(.skills | type == "array") | .skills[] | select(plain) ] as $named
+| [ ($lock.skills // {}) | to_entries[] | .key as $name | .value
+    | { name: $name, dir: (.skillPath // "" | dir_of), path: .skillPath,
+        source: (if .sourceType == "github" then "git:github.com/\(.source)" else null end),
+        why: (if .sourceType != "github" then "sourceType \(.sourceType) has no Pi package source"
+              elif .ref != null then "pinned to ref \(.ref)"
+              elif (.skillPath // "" | dir_of) == null then "no skill directory in skillPath"
+              else null end) } ] as $wants
+| [ $wants[] | . as $w
+    | ($pkgs | map(select(src == $w.source)) | first) as $pkg
+    | if $w.why then {op: "skip", name: $w.name, detail: $w.why}
+      elif ($local | index($w.name)) or ($local | index($w.dir)) then {op: "local", name: $w.name}
+      elif ($named | index($w.dir)) then {op: "ok", name: $w.name, source: $w.source, path: $w.path,
+                                          own: ($pkg | type == "object" and (.skills | index($w.dir)) != null)}
+      elif $same[$w.dir] then {op: "same", name: $w.name, detail: "already loaded by \($same[$w.dir])"}
+      elif $pkg == null then {op: "new", name: $w.name, dir: $w.dir, source: $w.source, path: $w.path}
+      elif ($pkg | whole) then {op: "ok", name: $w.name}
+      elif ($pkg.skills | all(plain)) then {op: "add", name: $w.name, dir: $w.dir, source: $w.source, path: $w.path}
+      else {op: "skip", name: $w.name, detail: "filter for \($w.source) uses patterns"} end ] as $rows
+| ([ $wants[].source ] | unique) as $lock_sources
+| [ $pkgs[] | objects | select(.skills | type == "array") | select(.source as $s | $lock_sources | index($s)) | .source as $s
+    | .skills[] | select(plain) | select(. as $n | ($wants | map(.dir) | index($n) | not) and ($agents | index($n) | not))
+    | {op: "gone", name: ., source: $s, detail: "\($s): npx skills removed it here"} ] as $gone
+| ($gone | if $prune then map({key: "\(.source)/\(.name)", value: true}) | from_entries else {} end) as $drop
+| ( [ $rows[] | select(.op == "add" or .op == "new") ] | group_by(.source) | map({key: .[0].source, value: map(.dir)}) | from_entries ) as $adds
+| [ $pkgs[] | if whole then . else
+              (if $adds[.source] then .skills += $adds[.source] else . end)
+              | .source as $s | .skills |= map(select($drop["\($s)/\(.)"] | not)) end ] as $kept
+# A filter that --prune empties is left in settings for `pi remove`, which deletes the entry and its clone.
+| [ $kept[] | select((whole | not) and .skills == []) | .source as $s
+    | select($drop | keys | any(startswith($s + "/"))) | $s ] as $removed
+| ( [ $rows[] | select(.op == "new") ] | group_by(.source)
+    | map({extensions: [], prompts: [], skills: map(.dir), source: .[0].source, themes: []}) ) as $created
+| {
+    rows: ($rows + $gone),
+    settings: ($settings | .packages = $kept + $created),
+    removed: $removed,
+    checks: [ $rows[] | select(.op == "add" or .op == "new" or (.op == "ok" and .own)) | {source, file: ((.source | clone_dir) + "/" + .path)} ] | unique,
+    whole: [ $pkgs[] | select(whole) | src | {source: ., dir: clone_dir} | select(.dir) ]
+  }
+'
+
+names_in() { [ -d "$1" ] && find "$1" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) | sed 's|.*/||' | jq -Rn '[inputs]' || echo '[]'; }
+lock=$( [ -f "$LOCK" ] && cat "$LOCK" || echo '{}' )
+local_copies=$(names_in "$AGENT_DIR/skills")
+agents=$(names_in "$AGENTS_SKILLS")
+
+plan() {
+  jq -n --argjson lock "$lock" --slurpfile settings "$SETTINGS" --argjson local "$local_copies" \
+    --argjson agents "$agents" --argjson same "$1" --argjson prune "$prune" \
+    "\$settings[0] as \$settings | $PLAN"
+}
+
+result=$(plan '{}')
+
+# A skill about to be added may already ship in a package Pi loads whole (pstack-claude and bro both have sharpen).
+# Searching those clones is the only slow step, so it runs only when something would be added.
+pending=$(jq -r '.rows[] | select(.op == "add" or .op == "new") | .dir' <<<"$result")
+if [ -n "$pending" ]; then
+  same='{}'
+  while IFS=$'\t' read -r source dir; do
+    [ -d "$AGENT_DIR/$dir" ] || continue
+    for name in $pending; do
+      hit=$(find "$AGENT_DIR/$dir" \( -name node_modules -o -name .git \) -prune -o -path "*/skills/$name/SKILL.md" -print -quit)
+      if [ -n "$hit" ]; then same=$(jq --arg n "$name" --arg s "$source" '.[$n] //= $s' <<<"$same"); fi
+    done
+  done < <(jq -r '.whole[] | [.source, .dir] | @tsv' <<<"$result")
+  if [ "$same" != '{}' ]; then result=$(plan "$same"); fi
+fi
+
+missing=$(jq -r '.checks[] | [.source, .file] | @tsv' <<<"$result" | while IFS=$'\t' read -r source file; do
+  [ -f "$AGENT_DIR/$file" ] || echo "$source"
+done | sort -u)
+
+{
+  jq -r '.rows[] | select(.op != "ok" and .op != "local") | [.op, .name, (.detail // .source)] | @tsv' <<<"$result"
+  # A local copy wins over its ~/.agents/skills twin; report when `npx skills update` or an edit made them differ.
+  for copy in "$AGENT_DIR"/skills/*/; do
+    name=$(basename "$copy")
+    [ -d "$AGENTS_SKILLS/$name" ] || continue
+    diff -rq "$AGENTS_SKILLS/$name" "$copy" >/dev/null 2>&1 \
+      || printf 'drift\t%s\tdiff -ru ~/.agents/skills/%s skills/%s\n' "$name" "$name" "$name"
+  done
+  for source in $missing; do printf 'fetch\t%s\tnot cloned or missing the skill\n' "$source"; done
+} | column -t -s $'\t'
+
+next=$(jq --indent 2 '.settings' <<<"$result")
+current=$(cat "$SETTINGS")
+removed=$(jq -r '.removed[]' <<<"$result")
+prune_hint=$(jq -r 'if any(.rows[]; .op == "gone") then "Run with --apply --prune to drop the gone names." else empty end' <<<"$result")
+if [ "$next" = "$current" ] && [ -z "$missing" ]; then
+  echo "in sync: $(jq '.rows | map(select(.op == "ok" or .op == "local")) | length' <<<"$result") lock skills loaded"
+  if [ -n "$prune_hint" ]; then echo "$prune_hint"; fi
+  exit 0
+fi
+if ! $apply; then echo "Dry run. Rerun with --apply.${prune_hint:+ $prune_hint}"; exit 0; fi
+
+if [ "$next" != "$current" ]; then
+  printf '%s' "$next" >"$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
+  echo "wrote   settings.json"
+fi
+for source in $removed; do pi remove "$source" >/dev/null && echo "pi remove $source"; done
+for source in $missing; do
+  dir=$(jq -rn --arg s "$source" '$s | "git/" + (.[4:] | sub("@.*$"; ""))')
+  if [ -d "$AGENT_DIR/$dir" ]; then pi update --extension "$source" >/dev/null && echo "pi update $source"
+  else pi install "$source" >/dev/null && echo "pi install $source"; fi
+done
+echo "Done. Review git diff, commit, and /reload open Pi sessions."

@@ -17,6 +17,7 @@ Credentials, project trust, sessions, caches, and downloaded packages stay on th
 | [`models.json`](models.json) | Custom providers. Empty. |
 | [`extensions/`](extensions) | Local extensions. See [Local extensions](#local-extensions). |
 | [`skills/`](skills) | Local skills. See [Local skills](#local-skills). |
+| [`scripts/skill-sync`](scripts/skill-sync) | Adds skills installed with `npx skills` to `settings.json`. See [Maintain the setup](#maintain-the-setup). |
 | `install/` | Metadata for Pi's managed install, which is on 1.5.2. |
 
 ## Models
@@ -42,17 +43,7 @@ Every model call goes through [CLIProxyAPI](https://github.com/router-for-me/CLI
 | `pi-rewind-hook` | Automatic git checkpoints, with file and conversation restore. |
 | `pi-tidy` | Folds each reply's tool calls into one line. User message and final reply frames are off. |
 
-These packages provide skills only. Their extensions, prompts, and themes are turned off.
-
-| Package | Skills |
-| --- | --- |
-| `agent-browser` | `agent-browser` |
-| `vercel-labs/agent-desktop` | `agent-desktop` |
-| `backnotprop/bro` | `clean-room`, `ladder`, `status` |
-| `google/skills` | `gcloud`, `finding-google-skills` |
-| `github/gh-stack` | `gh-stack` |
-| `cli/cli` | `gh` |
-| `plannotator/effective-html` | `design-artifact`, `html`, `html-diagram`, `html-plan`, `html-prototype`, `html-wireframe`, `one-pager` |
+The other `packages` entries in `settings.json` provide skills only. Their `skills` filter lists the skills Pi loads, and their extensions, prompts, and themes are turned off.
 
 ## Local extensions
 
@@ -100,7 +91,10 @@ These packages provide skills only. Their extensions, prompts, and themes are tu
 ## Maintain the setup
 
 - Run `pi update --extensions` to update every package. Package sources are unpinned, so an update can change versions. Pull this repository on each machine to sync the settings.
-- Add a skill from another repository as a package in `settings.json`. Use the `skills` filter to load only the skills you want. Set `extensions`, `prompts`, and `themes` to `[]` for a skill-only package.
+- Install skills with `npx skills add owner/repo`, then run `scripts/skill-sync`. It prints what Pi is missing. `scripts/skill-sync --apply` adds each skill to its repository's `skills` filter in `settings.json` and clones what Pi needs. Commit `settings.json`, then run `/reload` in open Pi sessions.
+- After `npx skills remove`, run `scripts/skill-sync --apply --prune` on the same machine to drop the removed names. The command never removes anything without `--prune`, because `settings.json` is shared and the npx skills lock file is per machine.
+- `scripts/skill-sync` also reports `drift` when a copy in `skills/` differs from its twin in `~/.agents/skills`, for example after `npx skills update`. Compare the two with the printed `diff` command and merge by hand.
+- To add a skill by hand, add a package to `settings.json` with a `skills` filter. Set `extensions`, `prompts`, and `themes` to `[]` for a skill-only package.
 - Copy a skill into `skills/` only when you edit it, and record the copy in `THIRD_PARTY_NOTICES.md`.
 - `settings.json` excludes `~/.agents/skills`, so only this setup loads globally. A project's `.agents/skills/` still loads. Keep project-specific skills there.
 - Keep credentials in environment variables, `auth.json`, and `mcp-auth.json`. Never commit them.
