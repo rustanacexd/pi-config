@@ -49,7 +49,8 @@
     },
     {
       "skills": [
-        "agent-desktop"
+        "agent-desktop",
+        "!agent-desktop"
       ],
       "source": "git:github.com/vercel-labs/agent-desktop"
     },
@@ -68,13 +69,15 @@
     {
       "skills": [
         "gcloud",
-        "finding-google-skills"
+        "finding-google-skills",
+        "!finding-google-skills"
       ],
       "source": "git:github.com/google/skills"
     },
     {
       "skills": [
-        "gh-stack"
+        "gh-stack",
+        "!gh-stack"
       ],
       "source": "git:github.com/github/gh-stack"
     },
@@ -93,16 +96,22 @@
         "html-diagram",
         "html-plan",
         "html-prototype",
+        "!html-prototype",
         "html-wireframe",
-        "one-pager"
+        "!html-wireframe",
+        "one-pager",
+        "!one-pager"
       ],
       "source": "git:github.com/plannotator/effective-html"
     },
     {
       "skills": [
         "record-demo",
+        "!record-demo",
         "add-voiceover",
-        "record-terminal-proof"
+        "!add-voiceover",
+        "record-terminal-proof",
+        "!record-terminal-proof"
       ],
       "source": "git:github.com/jamdotdev/skills"
     },
@@ -111,7 +120,6 @@
   "skills": [
     "!~/.agents/skills/**",
     "+~/.agents/skills/rex/SKILL.md",
-    "+~/.agents/skills/rexume/SKILL.md",
     "git/github.com/humanlayer/skills/plugins/show-me/skills/show-me"
   ],
   "extensions": [
