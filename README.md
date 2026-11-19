@@ -4,52 +4,13 @@ My personal [Pi](https://github.com/earendil-works/pi) setup. Git tracks the set
 
 Credentials, project trust, sessions, caches, and downloaded packages stay on the machine. See [`.gitignore`](.gitignore).
 
-## What's tracked
-
-| Path | Purpose |
-| --- | --- |
-| [`settings.json`](settings.json) | Default model and thinking level, enabled models, packages, compaction, and pi-tidy display settings. |
-| [`pstack-models.md`](pstack-models.md) | The model and effort for each pstack role. |
-| [`AGENTS.md`](AGENTS.md) | Global instructions for every session. |
-| [`cliproxyapi.json`](cliproxyapi.json) | CLIProxyAPI provider settings. |
-| [`web-search.json`](web-search.json) | pi-web-access settings. The Exa key comes from `EXA_API_KEY`. |
-| [`mcp-adapter.json`](mcp-adapter.json) | MCP servers for pi-mcp-adapter. Only Notion is configured. |
-| [`models.json`](models.json) | Custom providers. Empty. |
-| [`extensions/`](extensions) | Local extensions. |
-| [`skills/`](skills) | Local skills. See [Local skills](#local-skills). |
-| [`scripts/skill-sync`](scripts/skill-sync) | Adds skills installed with `npx skills` to `settings.json`. See [Maintain the setup](#maintain-the-setup). |
-| `install/` | Metadata for Pi's managed install, which is on 1.5.2. |
-
-## Models
-
-Every model call goes through [CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI), which runs locally at `http://127.0.0.1:8317`. The `@router-for-me/pi-cliproxyapi-provider` package registers the `cliproxyapi` provider. Its `tps.ts` extension is excluded.
-
-- The default model is `cliproxyapi/claude-opus-5-5` with `high` thinking.
-- The model picker cycles between Opus 5.5 and Fable 5.2.
-- Compaction reserves 500k tokens for both models.
-- pstack runs its roles on Opus and Fable, as set in `pstack-models.md`.
-- `session-title.ts` names sessions with `claude-haiku-5-5`. If Haiku is unavailable, it uses the current model.
-
-## Packages
-
-| Package | Provides |
-| --- | --- |
-| `michael-denyer/pstack-claude` | pstack skills, subagents, and the `/poteto-mode` workflow. |
-| `@router-for-me/pi-cliproxyapi-provider` | The `cliproxyapi` model provider. |
-| `pi-web-access` | Web search, source checks, and page, PDF, repository, and video fetching. |
-| `pi-mcp-adapter` | MCP client. It reads `mcp-adapter.json`. Pi's built-in MCP is turned off with `-builtin:mcp`. |
-| `@plannotator/pi-extension` | Plan mode and browser review of plans, files, and diffs. |
-| `pi-btw` | `/btw` side conversations while the main agent works. |
-| `pi-rewind-hook` | Automatic git checkpoints, with file and conversation restore. |
-| `pi-tidy` | Folds each reply's tool calls into one line. User message and final reply frames are off. |
-
-The other `packages` entries in `settings.json` provide skills only. Their `skills` filter lists the skills Pi loads, and their extensions, prompts, and themes are turned off.
-
 ## Local skills
 
 `skills/` holds copies of skills that have local edits:
 
-- `show-me`, `big-pics-little-words`, and `worktrunk` are copies with local edits.
+- `worktrunk` is a copy with local edits.
+
+`show-me` comes from `humanlayer/skills`. That repo is a Claude plugin marketplace with no Pi manifest, so the package entry only installs and updates the clone, and the top-level `skills` setting loads `git/github.com/humanlayer/skills/plugins/show-me/skills/show-me` from it.
 
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) lists the source and edits of each copy.
 

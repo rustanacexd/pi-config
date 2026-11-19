@@ -8,6 +8,9 @@
       },
       "cliproxyapi/claude-fable-5-2": {
         "reserveTokens": 600000
+      },
+      "cliproxyapi/gemini-4-neon": {
+        "reserveTokens": 648576
       }
     }
   },
@@ -22,8 +25,9 @@
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
-    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.9.8",
-    "{\"source\":\"npm:pi-rewind-hook\",\"scope\":\"user\"}": "1.8.9"
+    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.10.0",
+    "{\"source\":\"npm:pi-rewind-hook\",\"scope\":\"user\"}": "1.8.9",
+    "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.6"
   },
   "hideThinkingBlock": true,
   "lastChangelogVersion": "1.5.2",
@@ -35,7 +39,6 @@
         "-extensions/tps.ts"
       ]
     },
-    "npm:pi-btw",
     "npm:pi-web-access",
     "git:github.com/michael-denyer/pstack-claude",
     {
@@ -52,11 +55,15 @@
     },
     {
       "skills": [
-        "clean-room",
+        "big-pics-little-words",
         "ladder",
         "status"
       ],
       "source": "git:github.com/backnotprop/bro"
+    },
+    {
+      "skills": [],
+      "source": "git:github.com/humanlayer/skills"
     },
     {
       "skills": [
@@ -79,7 +86,6 @@
     },
     "npm:pi-mcp-adapter",
     "npm:pi-tidy",
-    "npm:pi-rewind-hook",
     {
       "skills": [
         "design-artifact",
@@ -91,12 +97,22 @@
         "one-pager"
       ],
       "source": "git:github.com/plannotator/effective-html"
-    }
+    },
+    {
+      "skills": [
+        "record-demo",
+        "add-voiceover",
+        "record-terminal-proof"
+      ],
+      "source": "git:github.com/jamdotdev/skills"
+    },
+    "npm:@aliou/pi-processes"
   ],
   "skills": [
     "!~/.agents/skills/**",
     "+~/.agents/skills/rex/SKILL.md",
-    "+~/.agents/skills/rexume/SKILL.md"
+    "+~/.agents/skills/rexume/SKILL.md",
+    "git/github.com/humanlayer/skills/plugins/show-me/skills/show-me"
   ],
   "extensions": [
     "-builtin:mcp"
@@ -105,7 +121,10 @@
     "userMessageStyle": "off",
     "userMessagePaddingY": 2,
     "finalReplyStyle": "off",
-    "messageBorderColors": { "assistant": "borderMuted" },
+    "messageBorderColors": {
+      "assistant": "borderMuted",
+      "custom": "borderMuted"
+    },
     "toolColors": {
       "bash": "bashMode",
       "read": "toolTitle",

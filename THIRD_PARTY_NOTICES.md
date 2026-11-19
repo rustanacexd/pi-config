@@ -4,12 +4,10 @@
 
 | Directory | Source | Local changes |
 | --- | --- | --- |
-| `show-me` | [rustanacexd/claude-config](https://github.com/rustanacexd/claude-config), `skills/show-me` | Uses the platform's browser or file opener instead of assuming macOS. |
-| `big-pics-little-words` | [backnotprop/bro](https://github.com/backnotprop/bro) | Adds "but dont use weird metaphors." |
 | `worktrunk` | [max-sixty/worktrunk](https://github.com/max-sixty/worktrunk), `skills/worktrunk` | Pi-specific guidance for commit generation and subagent worktrees. |
 
 Keep attribution and supporting files when updating these copies.
 
 ## Package skills
 
-All other skills come from unpinned packages in `settings.json` and update with `pi update --extensions`. The `backnotprop/bro` package's `skills` filter leaves out `big-pics-little-words`, so the local copy loads.
+All other skills come from unpinned packages in `settings.json` and update with `pi update --extensions`. `show-me` loads from the `humanlayer/skills` clone through the top-level `skills` setting, because that repo has no Pi manifest.
