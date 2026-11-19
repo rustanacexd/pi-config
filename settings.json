@@ -16,7 +16,8 @@
   "defaultThinkingLevel": "high",
   "enabledModels": [
     "cliproxyapi/claude-opus-5-5",
-    "cliproxyapi/claude-fable-5-2"
+    "cliproxyapi/claude-fable-5-2",
+    "cliproxyapi/gemini-4-neon"
   ],
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
