@@ -27,7 +27,8 @@
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
     "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.10.0",
     "{\"source\":\"npm:pi-rewind-hook\",\"scope\":\"user\"}": "1.8.9",
-    "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.6"
+    "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.6",
+    "{\"source\":\"npm:visual-explainer\",\"scope\":\"user\"}": "0.15.0"
   },
   "hideThinkingBlock": true,
   "lastChangelogVersion": "1.5.2",
@@ -91,21 +92,6 @@
     "npm:pi-tidy",
     {
       "skills": [
-        "design-artifact",
-        "html",
-        "html-diagram",
-        "html-plan",
-        "html-prototype",
-        "!html-prototype",
-        "html-wireframe",
-        "!html-wireframe",
-        "one-pager",
-        "!one-pager"
-      ],
-      "source": "git:github.com/plannotator/effective-html"
-    },
-    {
-      "skills": [
         "record-demo",
         "!record-demo",
         "add-voiceover",
@@ -115,7 +101,8 @@
       ],
       "source": "git:github.com/jamdotdev/skills"
     },
-    "npm:@aliou/pi-processes"
+    "npm:@aliou/pi-processes",
+    "npm:visual-explainer"
   ],
   "skills": [
     "!~/.agents/skills/**",
