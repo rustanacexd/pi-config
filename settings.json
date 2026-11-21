@@ -90,17 +90,6 @@
     },
     "npm:pi-mcp-adapter",
     "npm:pi-tidy",
-    {
-      "skills": [
-        "record-demo",
-        "!record-demo",
-        "add-voiceover",
-        "!add-voiceover",
-        "record-terminal-proof",
-        "!record-terminal-proof"
-      ],
-      "source": "git:github.com/jamdotdev/skills"
-    },
     "npm:@aliou/pi-processes",
     "npm:visual-explainer"
   ],
