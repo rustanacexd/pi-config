@@ -1,7 +1,29 @@
 // Names each pi session after its task, the way Claude Code titles its conversations. Pi puts the session
 // name in the terminal title ("π - <name> - <folder>"), so Rex and other terminals show it on the tab.
 // A name set with /name is kept. /retitle renames the session after where the conversation is now.
-import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent"
+// The tab already shows the name, so the footer drops it.
+import { type ExtensionAPI, type ExtensionContext, FooterComponent } from "@earendil-works/pi-coding-agent"
+
+// The built-in footer appends " • <name>" to its folder line and has no setting to turn that off.
+// Hiding the name for the length of one render keeps the rest of the footer as pi draws it.
+const FOOTER_PATCHED = Symbol.for("session-title.footer-without-name")
+function hideSessionNameInFooter() {
+  const proto = FooterComponent.prototype as FooterComponent & { [FOOTER_PATCHED]?: true }
+  if (proto[FOOTER_PATCHED]) return
+  proto[FOOTER_PATCHED] = true
+  const render = proto.render
+  proto.render = function (this: FooterComponent, width: number) {
+    const sessionManager = (this as unknown as { session: ExtensionContext }).session.sessionManager
+    const own = Object.getOwnPropertyDescriptor(sessionManager, "getSessionName")
+    Object.defineProperty(sessionManager, "getSessionName", { value: () => undefined, configurable: true })
+    try {
+      return render.call(this, width)
+    } finally {
+      if (own) Object.defineProperty(sessionManager, "getSessionName", own)
+      else delete (sessionManager as { getSessionName?: unknown }).getSessionName
+    }
+  }
+}
 
 const TITLE_MODEL = { provider: "cliproxyapi", id: "claude-haiku-5-5" }
 const MAX_PROMPT_CHARS = 2000
@@ -78,6 +100,7 @@ function recentConversation(ctx: ExtensionContext): string {
 }
 
 export default function (pi: ExtensionAPI) {
+  hideSessionNameInFooter()
   // pstack sets this in every subagent, whose session name nothing shows, so titling it wastes a model call.
   if (process.env.PI_SUBAGENT_PARENT_SESSION) return
   let naming = false
