@@ -19,9 +19,9 @@ function sessionNamingArgs(): string[] {
 
 // Rex sets TERM_PROGRAM=rex. A multiplexer inside a Rex pane replaces it; any other terminal means the
 // REX_* variables were inherited from a Rex shell that launched this terminal, and name the wrong pane.
-const TERMINALS_INSIDE_REX = new Set(["rex", "tmux"])
+export const TERMINALS_INSIDE_REX = new Set(["rex", "tmux"])
 
-function rexCandidates(): string[] {
+export function rexCandidates(): string[] {
   const own = process.env.REX_BIN_DIR ? [join(process.env.REX_BIN_DIR, "rex")] : []
   return [
     ...own,
