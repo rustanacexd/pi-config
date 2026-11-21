@@ -27,11 +27,11 @@
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
     "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.10.0",
     "{\"source\":\"npm:pi-rewind-hook\",\"scope\":\"user\"}": "1.8.9",
-    "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.6",
+    "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.7",
     "{\"source\":\"npm:visual-explainer\",\"scope\":\"user\"}": "0.15.0"
   },
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "1.5.2",
+  "lastChangelogVersion": "1.6.0",
   "packages": [
     "npm:@plannotator/pi-extension",
     {
