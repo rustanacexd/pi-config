@@ -9,7 +9,7 @@ hillclimb: cliproxyapi/gemini-4-neon @high
 judgment and prose: cliproxyapi/gemini-4-neon @high
 strongest judgment: fable @high
 arena runners: opus @xhigh, fable @high, cliproxyapi/gemini-4-neon @high
-arena cross-judge pool: opus @xhigh, fable @high, cliproxyapi/gemini-4-neon @high
+arena cross-judge pool: cliproxyapi/gemini-4-neon @high, fable @high, opus @xhigh
 swarm workers: opus @xhigh, cliproxyapi/gemini-4-neon @high
 interrogate reviewers: opus @xhigh, fable @high, cliproxyapi/gemini-4-neon @high
 thermos reviewers: opus @xhigh

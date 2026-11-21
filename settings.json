@@ -4,13 +4,13 @@
   "compaction": {
     "modelOverrides": {
       "cliproxyapi/claude-opus-5-5": {
-        "reserveTokens": 600000
+        "reserveTokens": 620000
       },
       "cliproxyapi/claude-fable-5-2": {
-        "reserveTokens": 600000
+        "reserveTokens": 620000
       },
       "cliproxyapi/gemini-4-neon": {
-        "reserveTokens": 648576
+        "reserveTokens": 748576
       }
     }
   },
@@ -25,10 +25,12 @@
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
-    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.10.0",
+    "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.11.0",
     "{\"source\":\"npm:pi-rewind-hook\",\"scope\":\"user\"}": "1.8.9",
     "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.7",
-    "{\"source\":\"npm:visual-explainer\",\"scope\":\"user\"}": "0.15.0"
+    "{\"source\":\"npm:visual-explainer\",\"scope\":\"user\"}": "0.15.0",
+    "{\"source\":\"npm:pi-claude-code-ui\",\"scope\":\"user\"}": "1.0.114",
+    "{\"source\":\"npm:pi-ui-enhancement\",\"scope\":\"user\"}": "2026.11.011"
   },
   "hideThinkingBlock": true,
   "lastChangelogVersion": "1.6.0",
@@ -70,8 +72,7 @@
     {
       "skills": [
         "gcloud",
-        "finding-google-skills",
-        "!finding-google-skills"
+        "finding-google-skills"
       ],
       "source": "git:github.com/google/skills"
     },
@@ -89,9 +90,9 @@
       "source": "git:github.com/cli/cli"
     },
     "npm:pi-mcp-adapter",
-    "npm:pi-tidy",
     "npm:@aliou/pi-processes",
-    "npm:visual-explainer"
+    "npm:visual-explainer",
+    "npm:pi-claude-code-ui"
   ],
   "skills": [
     "!~/.agents/skills/**",
@@ -100,24 +101,5 @@
   ],
   "extensions": [
     "-builtin:mcp"
-  ],
-  "tidy": {
-    "userMessageStyle": "off",
-    "userMessagePaddingY": 2,
-    "finalReplyStyle": "off",
-    "messageBorderColors": {
-      "assistant": "borderMuted",
-      "custom": "borderMuted"
-    },
-    "toolColors": {
-      "bash": "bashMode",
-      "read": "toolTitle",
-      "edit": "borderMuted",
-      "write": "borderMuted",
-      "grep": "syntaxOperator",
-      "find": "syntaxOperator",
-      "ls": "syntaxOperator",
-      "mcp": "customMessageLabel"
-    }
-  }
+  ]
 }
