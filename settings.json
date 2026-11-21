@@ -2,6 +2,7 @@
   "collapseChangelog": true,
   "showCacheMissNotices": true,
   "compaction": {
+    "keepRecentTokens": 45000,
     "modelOverrides": {
       "cliproxyapi/claude-opus-5-5": {
         "reserveTokens": 620000
@@ -10,7 +11,7 @@
         "reserveTokens": 620000
       },
       "cliproxyapi/gemini-4-neon": {
-        "reserveTokens": 748576
+        "reserveTokens": 628576
       }
     }
   },
