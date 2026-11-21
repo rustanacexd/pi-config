@@ -12,8 +12,6 @@ Credentials, project trust, sessions, caches, and downloaded packages stay on th
 
 `show-me` comes from `humanlayer/skills`. That repo is a Claude plugin marketplace with no Pi manifest, so the package entry only installs and updates the clone, and the top-level `skills` setting loads `git/github.com/humanlayer/skills/plugins/show-me/skills/show-me` from it.
 
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) lists the source and edits of each copy.
-
 ## Set up another machine
 
 1. Install Pi. It needs Node.js 22.19 or newer.
@@ -45,6 +43,6 @@ Credentials, project trust, sessions, caches, and downloaded packages stay on th
 - After `npx skills remove`, run `scripts/skill-sync --apply --prune` on the same machine to drop the removed names. The command never removes anything without `--prune`, because `settings.json` is shared and the npx skills lock file is per machine.
 - `scripts/skill-sync` also reports `drift` when a copy in `skills/` differs from its twin in `~/.agents/skills`, for example after `npx skills update`. Compare the two with the printed `diff` command and merge by hand.
 - To add a skill by hand, add a package to `settings.json` with a `skills` filter. Set `extensions`, `prompts`, and `themes` to `[]` for a skill-only package.
-- Copy a skill into `skills/` only when you edit it, and record the copy in `THIRD_PARTY_NOTICES.md`.
+- Copy a skill into `skills/` only when you edit it.
 - `settings.json` excludes `~/.agents/skills`, so only this setup loads globally. The exceptions are `rex` and `rexume`: `rex skill setup` and `rexume install` write and update their stubs there, and `settings.json` force-includes each one with a `+` path. A project's `.agents/skills/` still loads. Keep project-specific skills there.
 - Keep credentials in environment variables, `auth.json`, and `mcp-auth.json`. Never commit them.
