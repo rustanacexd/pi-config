@@ -17,7 +17,7 @@
   },
   "defaultModel": "gemini-4-neon",
   "defaultProvider": "cliproxyapi",
-  "defaultThinkingLevel": "high",
+  "defaultThinkingLevel": "medium",
   "enabledModels": [
     "cliproxyapi/gemini-4-neon",
     "cliproxyapi/claude-fable-5-2",
