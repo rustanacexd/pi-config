@@ -31,7 +31,8 @@
     "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.7",
     "{\"source\":\"npm:visual-explainer\",\"scope\":\"user\"}": "0.15.0",
     "{\"source\":\"npm:pi-claude-code-ui\",\"scope\":\"user\"}": "1.0.114",
-    "{\"source\":\"npm:pi-ui-enhancement\",\"scope\":\"user\"}": "2026.11.011"
+    "{\"source\":\"npm:pi-ui-enhancement\",\"scope\":\"user\"}": "2026.11.011",
+    "{\"source\":\"npm:pi-compact-tools\",\"scope\":\"user\"}": "0.18.0"
   },
   "hideThinkingBlock": true,
   "lastChangelogVersion": "1.6.0",
@@ -93,7 +94,7 @@
     "npm:pi-mcp-adapter",
     "npm:@aliou/pi-processes",
     "npm:visual-explainer",
-    "npm:pi-claude-code-ui"
+    "npm:pi-compact-tools"
   ],
   "skills": [
     "!~/.agents/skills/**",
