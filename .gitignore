@@ -26,6 +26,7 @@
 /cliproxyapi-models.json
 /web-search-cache/
 /pi-web-access/
+/notion-os/logs/
 
 # Pi-managed package installations and clones (reconciled via `pi update --extensions`)
 /npm/
