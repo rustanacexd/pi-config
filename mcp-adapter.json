@@ -3,6 +3,16 @@
     "notion": {
       "url": "https://mcp.notion.com/mcp",
       "directTools": false
+    },
+    "browse": {
+      "command": "~/.local/bin/browse",
+      "args": ["mcp"],
+      "directTools": false
+    },
+    "cua-driver": {
+      "command": "~/.local/bin/cua-driver",
+      "args": ["mcp"],
+      "directTools": false
     }
   }
 }

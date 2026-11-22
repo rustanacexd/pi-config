@@ -48,19 +48,6 @@
     "git:github.com/michael-denyer/pstack-claude",
     {
       "skills": [
-        "agent-browser"
-      ],
-      "source": "npm:agent-browser"
-    },
-    {
-      "skills": [
-        "agent-desktop",
-        "!agent-desktop"
-      ],
-      "source": "git:github.com/vercel-labs/agent-desktop"
-    },
-    {
-      "skills": [
         "big-pics-little-words",
         "ladder",
         "status"
@@ -99,6 +86,7 @@
   "skills": [
     "!~/.agents/skills/**",
     "+~/.agents/skills/rex/SKILL.md",
+    "+~/.agents/skills/cua-driver/SKILL.md",
     "git/github.com/humanlayer/skills/plugins/show-me/skills/show-me"
   ],
   "extensions": [
