@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "namespaceProxyTools": false
+  },
   "mcpServers": {
     "notion": {
       "url": "https://mcp.notion.com/mcp",
