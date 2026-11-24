@@ -54,7 +54,11 @@ const agentViewSchema = Type.Object({
   outputFile: Type.Optional(Type.String()),
   transcript: Type.Optional(Type.String()),
 })
-const snapshotSchema = Type.Object({ at: Type.String(), agents: Type.Array(agentViewSchema) })
+const snapshotSchema = Type.Object({
+  at: Type.String(),
+  agents: Type.Array(agentViewSchema),
+  hidden: Type.Optional(Type.Number()),
+})
 type AgentView = Static<typeof agentViewSchema>
 type Snapshot = Static<typeof snapshotSchema>
 
@@ -130,7 +134,13 @@ function snapshotOf(report: string, ctx: ExtensionContext): Snapshot | undefined
       outputFile: record.outputFile,
     })
   }
-  return { at: new Date().toISOString(), agents }
+  // Keep the MAX_AGENTS most recently started, plus any still running, in report order.
+  const recent = new Set(
+    [...agents].sort((a, b) => Date.parse(b.startedAt) - Date.parse(a.startedAt)).slice(0, MAX_AGENTS),
+  )
+  const shown = agents.filter((a) => a.status === "running" || recent.has(a))
+  const hidden = agents.length - shown.length
+  return { at: new Date().toISOString(), agents: shown, ...(hidden ? { hidden } : {}) }
 }
 
 function elapsed(from: string, to: string): string {
@@ -152,6 +162,7 @@ const LOOK = {
 } as const satisfies Record<Status, { icon: string; tone: string }>
 
 const ORDER: Status[] = ["running", "completed", "failed", "stopped"]
+const MAX_AGENTS = 20
 const MAX_NAME = 36
 const PAD = 1
 const LABEL_WIDTH = 11
@@ -185,7 +196,7 @@ class AgentsCard implements Component {
 
   private build(width: number, open: boolean): string[] {
     const { theme } = this
-    const { at, agents } = this.snapshot
+    const { at, agents, hidden } = this.snapshot
     const indent = " ".repeat(PAD)
     const fit = (line: string) => truncateToWidth(line, width, theme.fg("dim", "…"))
 
@@ -197,6 +208,7 @@ class AgentsCard implements Component {
       theme.fg("accent", open ? "▾" : "▸"),
       theme.bold("pstack agents"),
       counts.join(theme.fg("dim", " · ")),
+      ...(hidden ? [theme.fg("dim", `· ${hidden} older hidden`)] : []),
       theme.fg("dim", `· ${clock(at)}`),
     ].join(" ")
     const out = [fit(indent + header)]
