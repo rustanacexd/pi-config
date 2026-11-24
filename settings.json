@@ -50,7 +50,9 @@
       "skills": [
         "big-pics-little-words",
         "ladder",
-        "status"
+        "status",
+        "regret-minimization",
+        "storyboard"
       ],
       "source": "git:github.com/backnotprop/bro"
     },
