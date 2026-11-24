@@ -495,6 +495,7 @@ export default function geminiTts(pi: ExtensionAPI): void {
   pi.registerTool({
     name: "gemini_tts_clips",
     label: "Gemini TTS Clips",
+    exposure: "deferred",
     description:
       "Generate cached 24 kHz WAV narration clips for visual-explainer videos using Gemini 3.8 TTS (GEMINI_API_KEY), or search Gemini's Extended Voice Library.",
     promptSnippet:

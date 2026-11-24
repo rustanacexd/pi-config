@@ -18,6 +18,9 @@
   "defaultModel": "claude-opus-5-5",
   "defaultProvider": "cliproxyapi",
   "defaultThinkingLevel": "medium",
+  "defaultTools": [
+    "+tool_search"
+  ],
   "enabledModels": [
     "cliproxyapi/gemini-4-neon",
     "cliproxyapi/claude-fable-5-2",

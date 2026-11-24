@@ -1,0 +1,5 @@
+{
+  "$schema": "https://unpkg.com/@aliou/pi-processes@0.13.8/schema.json",
+  "toolExposure": "deferred",
+  "version": "0.10.6"
+}
