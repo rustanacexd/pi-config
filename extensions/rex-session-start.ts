@@ -58,7 +58,16 @@ export default function (pi: ExtensionAPI) {
       // whoami omits block_id when the server does not know REX_BLOCK, e.g. after the pane closed.
       if (JSON.parse(whoami).block_id !== REX_BLOCK) return undefined
       const args = ["__internal", "session-start", "--agent", "pi", ...sessionNamingArgs()]
-      return (await run(rex, args))?.trim() || undefined
+      const raw = (await run(rex, args))?.trim()
+      if (!raw) return undefined
+      const lines = [
+        `Rex terminal: REX_SESSION=${REX_SESSION} REX_BLOCK=${REX_BLOCK}`,
+        `Pass -s "$REX_SESSION" -b "$REX_BLOCK" to rex commands (load /skill:rex for usage).`,
+      ]
+      if (raw.includes("rex session rename")) {
+        lines.push(`Name session on first task: rex session rename "$REX_SESSION" <kebab-label>.`)
+      }
+      return lines.join("\n")
     }
     return undefined
   }
