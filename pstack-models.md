@@ -12,7 +12,7 @@ arena runners: fable @high, opus @xhigh, cliproxyapi/gemini-4-neon @xhigh
 arena cross-judge pool: opus @high, cliproxyapi/gemini-4-neon @xhigh
 swarm workers: opus @high
 interrogate reviewers: opus @xhigh, fable @high, cliproxyapi/gemini-4-neon @xhigh
-thermos reviewers: opus @high
+thermos reviewers: opus @xhigh
 no-comments reviewer: cliproxyapi/gemini-4-neon @xhigh
 
 pi models: opus=cliproxyapi/claude-opus-5-5, fable=cliproxyapi/claude-fable-5-2
