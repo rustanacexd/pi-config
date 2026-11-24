@@ -40,7 +40,15 @@ Credentials, project trust, sessions, caches, and downloaded packages stay on th
 
 - Run `pi update --extensions` to update every package. Package sources are unpinned, so an update can change versions. Pull this repository on each machine to sync the settings.
 - Install skills with `npx skills add owner/repo`, then run `scripts/skill-sync`. It prints what Pi is missing. `scripts/skill-sync --apply` adds each skill to its repository's `skills` filter in `settings.json` and clones what Pi needs. Commit `settings.json`, then run `/reload` in open Pi sessions.
-- After `npx skills remove`, run `scripts/skill-sync --apply --prune` on the same machine to drop the removed names. The command never removes anything without `--prune`, because `settings.json` is shared and the npx skills lock file is per machine.
+- To remove a skill, uninstall it with npx first, then prune:
+
+  ```sh
+  npx skills remove -g <name>
+  scripts/skill-sync --apply --prune
+  ```
+
+  `--prune` drops the removed names from `settings.json`. The command never removes anything without `--prune`, because `settings.json` is shared and the npx skills lock file is per machine.
+- Don't remove a skill by deleting it from `settings.json` alone. `scripts/skill-sync` adds every skill that npx has installed on this machine, so the next `--apply` puts it back. Example: `plannotator/effective-html` left `settings.json` in `7a76f99`, but its npx install stayed, so `skill-sync` kept listing it as `new` until `npx skills remove` uninstalled it.
 - `scripts/skill-sync` also reports `drift` when a copy in `skills/` differs from its twin in `~/.agents/skills`, for example after `npx skills update`. Compare the two with the printed `diff` command and merge by hand.
 - To add a skill by hand, add a package to `settings.json` with a `skills` filter. Set `extensions`, `prompts`, and `themes` to `[]` for a skill-only package.
 - Copy a skill into `skills/` only when you edit it.
