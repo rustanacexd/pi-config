@@ -8,8 +8,9 @@
       "directTools": false
     },
     "browse": {
-      "command": "~/.local/bin/browse",
-      "args": ["mcp"],
+      "env": {
+        "OPENCODE_BROWSER_ALLOW_FILE_URLS": "1"
+      },
       "directTools": false
     },
     "cua-driver": {

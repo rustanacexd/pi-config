@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "browse": {
+      "command": "/Users/rustancorpuz/.local/bin/browse",
+      "args": [
+        "mcp"
+      ]
+    }
+  }
+}
