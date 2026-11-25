@@ -17,6 +17,17 @@
       "command": "~/.local/bin/cua-driver",
       "args": ["mcp"],
       "directTools": false
+    },
+    "aws-mcp": {
+      "command": "uvx",
+      "args": [
+        "mcp-proxy-for-aws@2.0.0",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--region",
+        "us-east-1"
+      ],
+      "directTools": false,
+      "approveTools": "destructive"
     }
   }
 }
