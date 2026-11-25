@@ -40,7 +40,6 @@
   "hideThinkingBlock": true,
   "lastChangelogVersion": "1.6.0",
   "packages": [
-    "npm:@plannotator/pi-extension",
     {
       "source": "npm:@router-for-me/pi-cliproxyapi-provider",
       "extensions": [
