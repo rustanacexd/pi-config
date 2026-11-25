@@ -15,9 +15,9 @@
       }
     }
   },
-  "defaultModel": "claude-opus-5-5",
+  "defaultModel": "gemini-4-neon",
   "defaultProvider": "cliproxyapi",
-  "defaultThinkingLevel": "medium",
+  "defaultThinkingLevel": "high",
   "defaultTools": [
     "+tool_search"
   ],
