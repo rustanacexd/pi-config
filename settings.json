@@ -1,6 +1,5 @@
 {
   "collapseChangelog": true,
-  "showCacheMissNotices": true,
   "compaction": {
     "keepRecentTokens": 45000,
     "modelOverrides": {
@@ -38,7 +37,7 @@
     "{\"source\":\"npm:pi-compact-tools\",\"scope\":\"user\"}": "0.18.0"
   },
   "hideThinkingBlock": true,
-  "lastChangelogVersion": "1.6.0",
+  "lastChangelogVersion": "1.6.1",
   "packages": [
     {
       "source": "npm:@router-for-me/pi-cliproxyapi-provider",
@@ -96,5 +95,11 @@
   ],
   "extensions": [
     "-builtin:mcp"
-  ]
+  ],
+  "notices": {
+    "cacheMisses": true,
+    "cacheWarming": true,
+    "compactionCosts": true,
+    "reasoningDrops": true
+  }
 }
