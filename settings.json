@@ -30,7 +30,7 @@
     "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.1",
     "{\"source\":\"npm:pi-tidy\",\"scope\":\"user\"}": "0.11.0",
     "{\"source\":\"npm:pi-rewind-hook\",\"scope\":\"user\"}": "1.8.9",
-    "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.8",
+    "{\"source\":\"npm:@aliou/pi-processes\",\"scope\":\"user\"}": "0.13.9",
     "{\"source\":\"npm:visual-explainer\",\"scope\":\"user\"}": "0.16.0",
     "{\"source\":\"npm:pi-claude-code-ui\",\"scope\":\"user\"}": "1.0.114",
     "{\"source\":\"npm:pi-ui-enhancement\",\"scope\":\"user\"}": "2026.11.011",
