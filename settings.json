@@ -85,7 +85,7 @@
     "npm:@aliou/pi-processes",
     "npm:visual-explainer",
     "npm:pi-compact-tools",
-    "npm:pi-btw"
+    "npm:@plannotator/pi-extension"
   ],
   "skills": [
     "!~/.agents/skills/**",
